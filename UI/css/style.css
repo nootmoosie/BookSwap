@@ -10,7 +10,7 @@ body {
 
 #addBookLogo{
 	text-align: center;
-	font-size: 30px;
+	font-size: 25px;
 	margin-bottom: 30px;
 }
 #BookForm{
@@ -47,4 +47,7 @@ textarea{
 }
 #cancelBtn {
 	width: 30%;
+}
+#addBookImage{
+	margin-bottom: 15px;
 }
