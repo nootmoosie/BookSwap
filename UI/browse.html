@@ -1,47 +1,245 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BookSwap Browse</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      margin: auto;
+      min-height:200px;
+  }
+  .carousel {
+  	width: 100%;
+  }
 
-<html>
 
-	<head>
-		<title>Index</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body>
 
-	<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-		<!-- Write Your Code In Here -->
 
-		<div class="row">
-		  <div class="col-md-1"><a href="./Index.html" class="btn">Link To Index</a></div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-8">.col-md-8</div>
-		  <div class="col-md-4">.col-md-4</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-4">.col-md-4</div>
-		  <div class="col-md-4">.col-md-4</div>
-		  <div class="col-md-4">.col-md-4</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-6">.col-md-6</div>
-		  <div class="col-md-6">.col-md-6</div>
-		</div>
-		
-	</body>
+<div class="row">
+  <div class="col-sm-1">
+<div class="btn-group-vertical" data-toggle="buttons">
+	  <h3>Filter Choices</h3>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Fantasy
+	  </label>
+	  <label class="btn btn-info">
+	  	<input type="checkbox" checked autocomplete="off"> Science Fiction
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Fiction
+	  </label>
+	  <label class="btn btn-info"> 
+	    <input type="checkbox" checked autocomplete="off"> Young Adult
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Nonfiction
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Horror
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Satire
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Mystery
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Romance
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Cookbooks
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Self-Help
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Religion &amp; Spirituality
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Poetry
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Biography
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Historical Fiction
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Guide
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Comics
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Comedy
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Fan Fiction lol
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> Manga
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> idk what
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> other genres
+	  </label>
+	  <label class="btn btn-info">
+	    <input type="checkbox" checked autocomplete="off"> are there
+	  </label>
+	</div>
+  </div>
+  <div class="col-sm-1 btn-group-vertical"> 
+  	<h3>Owner Info</h3>
+  	<img src="https://i.imgur.com/kDvRIjR.png" style="width:100%" alt="Image">
+  	<label class="btn btn-primary">
+  		Daho Inoraha
+  	</label>
+  	<p> Location:  <br> UMass Amherst</p>
 
+  	<a href="https://www.google.com/maps/place/University+of+Massachusetts+Amherst/@42.3911569,-72.5289008,17z/data=!3m1!4b1!4m5!3m4!1s0x89e6d273e4f0f865:0xa0d6586089148e05!8m2!3d42.3911569!4d-72.5267121" title=""><img src="https://i.imgur.com/KokzlKU.png" class="img-responsive"> Google Maps</a>
+
+  	<br> <br> <br> <br> <br> <br> <br> <br>
+
+  	<h4>Other Owners</h4>
+
+  	<label class="btn btn-primary">
+  		Jacob James
+  	</label>
+  	<label class="btn btn-primary">
+  		John Jeremies
+  	</label>
+  	<label class="btn btn-primary">
+  		Jack Jones
+  	</label>
+  	<label class="btn btn-primary">
+  		Jeff Jefferson
+  	</label>
+  	<label class="btn btn-primary">
+  		Jedediah Jet
+  	</label>
+  	<label class="btn btn-primary">
+  		Bob
+  	</label>
+
+  </div>
+  <div class="col-sm-10">
+  	<div class = "container-fluid">
+  	<h3> Browse Books!</h3>
+  	<div id="myCarousel" class="carousel slide">
+	    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+       <img src="https://i.imgur.com/Itlu1v5.jpg" style="width:35%" alt="Image">
+        <div class="carousel-caption">
+          <h3><a href="https://i.imgur.com/Itlu1v5.jpg"> Marriage, a History</a></h3>
+          <p>Stephanie Coontz</p>
+          <p>(The above link will lead to a page with more info on the book and what the owner is looking for) </p>
+        </div>      
+      </div>
+	      <div class="item">
+        <img src="https://i.imgur.com/1D9rPU4.jpg" style="width:35%" alt="Image">
+        <div class="carousel-caption">
+          <h3><a href="https://i.imgur.com/1D9rPU4.jpg"> The Complete Vegetarian Cookbook </a></h3>
+          <p>America's Test Kitchen</p>
+          <p> </p>
+        </div>      
+      </div>
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+	  </div>
+  	  </div>
+
+	</div>
+</div>
+
+
+<!-- This will be used in the page where we should more info about the book -->
+
+
+<!-- <div class="container text-center">    
+  <h3>More Info on Current Book</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="https://i.imgur.com/QTE63JO.jpg" class="img-responsive" style="width:150px" style="height:80px" alt="Image">
+      <p>Picture of current book</p>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="https://i.imgur.com/iN0FH4H.jpg" class="img-responsive" style="width:150px" style="height:80px" alt="Image">
+      <p>Another picture of current book</p>    
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+       <p>Book's blurb</p>
+      </div>
+      <div class="well">
+       <p>Links to popular reviews of the book</p>
+      </div>
+    </div>
+  </div>
+</div><br> -->
+
+<footer class="container-fluid text-center">
+  <p>WEB Dev Boys Mock UI 2018</p>
+</footer>
+
+</body>
 </html>
