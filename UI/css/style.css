@@ -1,0 +1,42 @@
+body {
+	background-color: gray;
+}
+
+#logo{
+	text-align: center;
+	font-size: 80px;
+}
+
+#addBookLogo{
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+#BookForm{
+	text-align: center;
+	font-size: 26px;
+}
+#BookForm .TextIn {
+	text-align: center;
+	font-size: 28px;
+	width: 75%;
+}
+input {
+	margin-bottom: 15px;
+}
+#comments{
+	text-align: center;
+	font-size: 28px;
+}
+textarea{
+	width: 65%;
+	margin-bottom: 30px;
+}
+#submitBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#submitBtn {
+	width: 30%;
+}
