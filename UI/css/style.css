@@ -1,0 +1,53 @@
+body {
+	background-color: gray;
+}
+
+#logo{
+	text-align: center;
+	font-size: 80px;
+	margin-bottom: 40px;
+}
+
+#addBookLogo{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 30px;
+}
+#BookForm{
+	text-align: center;
+	font-size: 26px;
+}
+#BookForm .TextIn {
+	font-size: 28px;
+	width: 75%;
+}
+input {
+	margin-bottom: 15px;
+}
+#comments{
+	text-align: center;
+	font-size: 28px;
+}
+textarea{
+	width: 65%;
+	margin-bottom: 30px;
+}
+#submitBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#submitBtn {
+	width: 30%;
+}
+#cancelBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#cancelBtn {
+	width: 30%;
+}
+#addBookImage{
+	margin-bottom: 15px;
+}
