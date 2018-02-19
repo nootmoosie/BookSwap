@@ -1,47 +1,165 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BookSwap | Bob's Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
 
-<html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a href="./Home.html"><img src="images/Logo.png" height="45" width="190" alt="BookSwap"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p>Bob Jackson</p>
+        <img src="images/ProPic.jpg" class="img-circle" height="95" width="95" alt="Avatar">
+        <p><a href="#">Send Message</a></p>
+      </div>
+      <div class="well">
+        <p><a href="#">Favorite Genres</a></p>
+        <p>
+          <span class="label label-default">Computer Science</span>
+          <span class="label label-primary">SciFi</span>
+          <span class="label label-success">Mystery</span>
+          <span class="label label-info">Romance</span>
+          <span class="label label-warning">Geometry</span>
+          <span class="label label-danger">History</span>
+        </p>
+      </div>
+      <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Hey!</strong></p>
+        This person is trading the following books that are on your wishlist:
+      </div>
+      <p><a href="#">Moby Dick</a></p>
+      <p><a href="#">Math 441</a></p>
+      <p><a href="#">CS 311</a></p>
+    </div>
+    <div class="col-sm-7">
+    
+      <strong>Bio:</strong>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <p contenteditable="true">Hello everyone! I am a junior computer science major at UMass looking to swap some books. If any of my offers interest you, message me so we can make a deal and meet up!</p>   
+            </div>
+          </div>
+        </div>
+      </div>
+      <strong>Books For Swapping:</strong>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>Algorithm Design</p>
+           <img src="images/CS311.jpg" height="85" width="85" alt="Book">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p>Just finished up Algorithms with a whopping D-... Looking to swap this book for a Geo101 book or any exotic cook books. If you don't have either of these, I'd be open to selling it for $40 (or best offer). Send me a message if interested!</p>
+          <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
+          </button>
+          </div>   
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>Abstract Algebra</p>
+           <img src="images/Math411.jpg" height="85" width="75" alt="Book">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p>Looking for someone to trade my Abstract Algebra book with. I've decided to cut math out of my life entirely, so I will trade for legitimately any book without numbers in it. I would also take $68 cash or the best offer. Hmu if you want to meet up.</p>
+          <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
+          </button>
+          </div>   
+        </div>
+      </div>
+      
+      <strong>User Reviews:</strong> 
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p><a href="#">John</a></p>
+           <img src="images/ProPic2.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p>Me and Bob traded iSpy books a few days ago. Quick and easy trade, I love my new book! 5 stars!</p>
+          </div>
+        </div>
+      </div>   
+    </div>
+    <div class="col-sm-2 well">
+      <div class="thumbnail">
+        <p>Recommended:</p>
+        <img src="images/MobyDick.jpg" alt="Book" width="400" height="300">
+        <p><strong>Moby Dick</strong></p>
+        <p>13 Postings</p>
+        <button class="btn btn-primary">See Offers</button>
+      </div> 
+      <div class="thumbnail">
+        <img src="images/FakeAd1.jpg" alt="Ad" width="400" height="300">
+      </div>             
+      <div class="thumbnail">
+        <img src="images/FakeAd2.jpg" alt="Ad" width="400" height="300">
+      </div>  
+    </div>
+  </div>
+</div>
 
-	<head>
-		<title>Index</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+<footer class="container-fluid text-center">
+  <p><a href="#"><font color=white>Contact Us</font></a></p>
+</footer>
 
-	<body>
-
-		<!-- Write Your Code In Here -->
-
-		<div class="row">
-		  <div class="col-md-1"><a href="./Index.html" class="btn">Link To Index</a></div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		  <div class="col-md-1">.col-md-1</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-8">.col-md-8</div>
-		  <div class="col-md-4">.col-md-4</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-4">.col-md-4</div>
-		  <div class="col-md-4">.col-md-4</div>
-		  <div class="col-md-4">.col-md-4</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-6">.col-md-6</div>
-		  <div class="col-md-6">.col-md-6</div>
-		</div>
-		
-	</body>
-
+</body>
 </html>
