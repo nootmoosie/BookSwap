@@ -18,7 +18,6 @@ body {
 	font-size: 26px;
 }
 #BookForm .TextIn {
-	text-align: center;
 	font-size: 28px;
 	width: 75%;
 }
@@ -39,5 +38,13 @@ textarea{
 	font-size: 28px;
 }
 #submitBtn {
+	width: 30%;
+}
+#cancelBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#cancelBtn {
 	width: 30%;
 }
