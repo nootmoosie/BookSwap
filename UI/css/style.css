@@ -1,11 +1,14 @@
 body {
-	background-color: gray;
+	font-family: 'Spectral SC';
+	color: black;
+	background-color: #555;
 }
 
 #logo{
 	text-align: center;
-	font-size: 80px;
-	margin-bottom: 40px;
+	width: 150px;
+	/*font-size: 80px;*/
+	/*margin-bottom: 40px;*/
 }
 
 #addBookLogo{
@@ -50,4 +53,43 @@ textarea{
 }
 #addBookImage{
 	margin-bottom: 15px;
+}
+#fileupload{
+	text-align: center;
+	margin-left: 20px;
+}
+
+
+
+h2
+{
+	color: white;
+	text-align: center;
+}
+
+.btn-danger
+{
+	margin-left: 20px;
+	border-radius: 49%;
+}
+
+.input-group
+{
+	margin-left: 100px;
+}
+
+.jumbotron
+{
+	font-family: 'Graduate';
+	background-color: #D0D3D4;
+}
+
+.navbar-brand, .navbar-nav li a 
+{
+	font-size: 1.2em;
+}
+
+.panel-body img
+{
+	height: 400px;
 }
