@@ -24,15 +24,34 @@
       min-height:200px;
   }
   .carousel {
-  	width: 100%;
+  	width: 130%;
   }
 
+  .btn .btn-info {
+  	padding-bottom: 10px;
+  }
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
       display: none; 
     }
   }
+
+	/* Smaller than standard 960 (devices and browsers) */
+    @media only screen and (max-width: 959px) {}
+
+    /* Tablet Portrait size to standard 960 (devices and browsers) */
+    @media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+    /* All Mobile Sizes (devices and browser) */
+    @media only screen and (max-width: 767px) {}
+
+    /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+    @media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+    /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+    @media only screen and (max-width: 479px) {}
+
   </style>
 </head>
 <body>
@@ -63,7 +82,7 @@
 
 
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3 col-md-1">
 <div class="btn-group-vertical" data-toggle="buttons">
 	  <h3>Filter Choices</h3>
 	  <label class="btn btn-info">
@@ -138,17 +157,16 @@
 	</div>
   </div>
 
-<!--   <div class="col-sm-1 btn-group-vertical container-fluid"> 
+  <div class="col-sm-6 col-md-2 btn-group-vertical"> 
   	<h3>Owner Info</h3>
-  	<img src="https://i.imgur.com/kDvRIjR.png" style="width:100%" alt="Image">
+  	<img src="https://i.imgur.com/kDvRIjR.png" style="width:90%" alt="Image">
   	<label class="btn btn-primary">
   		Daho Inoraha
   	</label>
   	<p> Location:  <br> UMass Amherst</p>
 
-  	<a href="https://www.google.com/maps/place/University+of+Massachusetts+Amherst/@42.3911569,-72.5289008,17z/data=!3m1!4b1!4m5!3m4!1s0x89e6d273e4f0f865:0xa0d6586089148e05!8m2!3d42.3911569!4d-72.5267121" title=""><img src="https://i.imgur.com/KokzlKU.png" class="img-responsive"> Google Maps</a>
+  	<a href="https://www.google.com/maps/place/University+of+Massachusetts+Amherst/@42.3911569,-72.5289008,17z/data=!3m1!4b1!4m5!3m4!1s0x89e6d273e4f0f865:0xa0d6586089148e05!8m2!3d42.3911569!4d-72.5267121" title=""><img src="https://i.imgur.com/KokzlKU.png" class="img-responsive" style="width:90%"> Google Maps</a>
 
-  	<br> <br> <br> <br> <br> <br> <br> <br>
 
   	<h4>Other Owners</h4>
 
@@ -171,9 +189,9 @@
   		Bob
   	</label>
 
-  </div> -->
+  </div>
 
-  <div class="col-sm-9">
+  <div class="col-sm-12 col-md-7">
   	<div class = "container-fluid">
   	<h3> Browse Books!</h3>
   	<div id="myCarousel" class="carousel slide">
@@ -212,6 +230,18 @@
 </div>
 
 
+<footer class="container-fluid text-center">
+  <p>WEB Dev Boys Mock UI 2018</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
 <!-- This will be used in the page where we should more info about the book -->
 
 
@@ -236,10 +266,3 @@
     </div>
   </div>
 </div><br> -->
-
-<footer class="container-fluid text-center">
-  <p>WEB Dev Boys Mock UI 2018</p>
-</footer>
-
-</body>
-</html>
