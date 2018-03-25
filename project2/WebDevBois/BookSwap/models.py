@@ -37,13 +37,12 @@ class Genre(models.Model):
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
     """
     BOOK_GENRES = (
-        ('f','Fiction'),
-        ('n','Non-Fiction'),
-        ('t','Textbook'),
-        ('h','History'),
-        ('m','Mystery'),
-        ('h','History'),
-        ('s','Sci-Fi'),
+        ('Fiction','Fiction'),
+        ('Non-Fiction','Non-Fiction'),
+        ('Textbook','Textbook'),
+        ('History','History'),
+        ('Mystery','Mystery'),
+        ('Sci-Fi','Sci-Fi'),
     )
 
     name = models.CharField(max_length=200, choices=BOOK_GENRES, blank=True, default='Fiction', help_text="Select a book genre (e.g. Science Fiction, French Poetry etc.)")
@@ -61,7 +60,6 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
-    isbn = models.CharField('ISBN',max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
     for_class = models.CharField('Class', max_length=200, help_text='Enter which class this textbook is for.', default='Not for a class.')
     
@@ -90,7 +88,6 @@ class BookInstance(models.Model):
     )
 
     book_condition = models.CharField(max_length=1, choices=CONDITION, blank=True, default='5', help_text='Book condition')
-    owner = models.OneToOneField('User', on_delete=models.SET_NULL, null=True)
     comment = models.CharField(max_length=500, default='', help_text='Additional comments about your book (e.g. pricing, books you want to swap it for, etc).')
 
     class Meta:
@@ -133,7 +130,16 @@ class User(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
 	first_name = models.CharField(max_length=200, help_text="Enter your first name.")
 	last_name = models.CharField(max_length=200, help_text="Enter your last name.")
-	university = models.CharField(max_length=200, help_text="Enter your school or university.")
+	SCHOOLS = (
+		('University of Massachusetts Amherst','University of Massachusetts Amherst'),
+		('Hampshire College', 'Hampshire College'),
+		('Smith College', 'Smith College'),
+		('Mount Holyoke College', 'Mount Holyoke College'),
+		('Amherst College', 'Amherst College'),
+		('Other','Other'),
+		('None', 'None'),
+	)
+	university = models.CharField(max_length=200, choices=SCHOOLS, blank=True, default='None', help_text='School or University')
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
 	books_offered = models.ManyToManyField(BookInstance, help_text="THIS IS INCORRECT") #fix this later.
