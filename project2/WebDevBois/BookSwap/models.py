@@ -37,13 +37,13 @@ class Genre(models.Model):
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
     """
     BOOK_GENRES = (
-        'Fiction',
-        'Non-Fiction',
-        'Textbook',
-        'History',
-        'Mystery',
-        'History',
-        'Sci-Fi',
+        ('f','Fiction'),
+        ('n','Non-Fiction'),
+        ('t','Textbook'),
+        ('h','History'),
+        ('m','Mystery'),
+        ('h','History'),
+        ('s','Sci-Fi'),
     )
 
     name = models.CharField(max_length=200, choices=BOOK_GENRES, blank=True, default='Fiction', help_text="Select a book genre (e.g. Science Fiction, French Poetry etc.)")
@@ -86,10 +86,12 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
 
     CONDITION = (
-        '5', '4', '3', '2', '1',
+        ('5','Like-New'), ('4','Good'), ('3','Average'), ('2','Bad'), ('1','Barely Readable'),
     )
 
     book_condition = models.CharField(max_length=1, choices=CONDITION, blank=True, default='5', help_text='Book condition')
+    owner = models.OneToOneField('User', on_delete=models.SET_NULL, null=True)
+    comments = models.CharField(max_length=500, help_text='Any additional comments about your book (e.g. pricing, reason for getting rid of it, etc).')
 
     class Meta:
         ordering = ["book_condition"]
@@ -100,3 +102,48 @@ class BookInstance(models.Model):
         String for representing the Model object
         """
         return '{0} ({1})'.format(self.id,self.book.title)
+
+class Author(models.Model):
+    """
+    Model representing an author.
+    """
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ["last_name","first_name"]
+    
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular author instance.
+        """
+        return reverse('author-detail', args=[str(self.id)])
+    
+
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return '{0}, {1}'.format(self.last_name,self.first_name)
+
+class User(models.Model):
+	"""
+	Model representing each user in the system.
+	"""
+	#id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
+	first_name = models.CharField(max_length=200, help_text="Enter your first name.")
+	last_name = models.CharField(max_length=200, help_text="Enter your last name.")
+	university = models.CharField(max_length=200, help_text="Enter your school or university.")
+	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
+
+	books_offered = models.ManyToManyField(Book, help_text="THIS IS INCORRECT") #fix this later.
+	books_wanted = models.ManyToManyField(Book, help_text="THIS IS INCORRECT") #fix this later.
+
+	class Meta:
+		ordering = ["last_name","first_name"]
+
+	def get_absolute_url(self):
+		return reverse('user-detail', args=[str(self.id)])
+    
+	def __str__(self):
+		return '{0}, {1}'.format(self.first_name,self.last_name)
