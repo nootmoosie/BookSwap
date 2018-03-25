@@ -91,7 +91,7 @@ class BookInstance(models.Model):
 
     book_condition = models.CharField(max_length=1, choices=CONDITION, blank=True, default='5', help_text='Book condition')
     owner = models.OneToOneField('User', on_delete=models.SET_NULL, null=True)
-    comments = models.CharField(max_length=500, help_text='Any additional comments about your book (e.g. pricing, reason for getting rid of it, etc).')
+    comment = models.CharField(max_length=500, default='', help_text='Additional comments about your book (e.g. pricing, books you want to swap it for, etc).')
 
     class Meta:
         ordering = ["book_condition"]
@@ -130,13 +130,13 @@ class User(models.Model):
 	"""
 	Model representing each user in the system.
 	"""
-	#id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
 	first_name = models.CharField(max_length=200, help_text="Enter your first name.")
 	last_name = models.CharField(max_length=200, help_text="Enter your last name.")
 	university = models.CharField(max_length=200, help_text="Enter your school or university.")
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
-	books_offered = models.ManyToManyField(Book, help_text="THIS IS INCORRECT") #fix this later.
+	books_offered = models.ManyToManyField(BookInstance, help_text="THIS IS INCORRECT") #fix this later.
 	books_wanted = models.ManyToManyField(Book, help_text="THIS IS INCORRECT") #fix this later.
 
 	class Meta:
