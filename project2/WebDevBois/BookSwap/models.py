@@ -143,7 +143,7 @@ class User(models.Model):
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
 	books_offered = models.ManyToManyField(BookInstance, help_text="THIS IS INCORRECT") #fix this later.
-	books_wanted = models.ManyToManyField(Book, help_text="THIS IS INCORRECT") #fix this later.
+	books_wanted = models.ManyToManyField(Book) 
 
 	class Meta:
 		ordering = ["last_name","first_name"]
