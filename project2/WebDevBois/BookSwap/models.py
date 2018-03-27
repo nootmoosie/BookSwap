@@ -76,12 +76,17 @@ class Book(models.Model):
         """
         return reverse('book-detail', args=[str(self.id)])
 
+    class Meta:
+        unique_together = (('title', 'author'),)
+
 class BookInstance(models.Model):
     """
     Model representing a specific copy of a book (i.e. that can be borrowed from the library).
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
+    owner = models.ForeignKey('User', on_delete=models.CASCADE, null=True)
+
 
     CONDITION = (
         ('5','Like-New'), ('4','Good'), ('3','Average'), ('2','Bad'), ('1','Barely Readable'),
@@ -123,6 +128,9 @@ class Author(models.Model):
         """
         return '{0}, {1}'.format(self.last_name,self.first_name)
 
+    class Meta:
+        unique_together = (('first_name', 'last_name'),)
+
 class User(models.Model):
 	"""
 	Model representing each user in the system.
@@ -142,7 +150,8 @@ class User(models.Model):
 	university = models.CharField(max_length=200, choices=SCHOOLS, blank=True, default='None', help_text='School or University')
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
-	books_offered = models.ManyToManyField(BookInstance, help_text="THIS IS INCORRECT") #fix this later.
+    
+	books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
 	books_wanted = models.ManyToManyField(Book) 
 
 	class Meta:
