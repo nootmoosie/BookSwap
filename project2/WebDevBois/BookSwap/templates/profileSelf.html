@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  {% load static %}
+  <link rel="stylesheet" href= "{% static 'css/style.css' %}">
+  
   <style>    
     /* Set black background color, white text and some padding */
     footer {
@@ -26,41 +30,55 @@
     li{
       margin:10px 0;
     }
+    .btn-danger
+    {
+      margin-left: 20px;
+      border-radius: 49%;
+    }
+
+    .input-group
+    {
+      margin-left: 100px;
+    }
+
+    .jumbotron
+    {
+      font-family: 'Graduate';
+      background-color: #D0D3D4;
+      /*background-color: #C39BD3;*/    
+    }
+
+    .navbar-brand, .navbar-nav li a 
+    {
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Messages</a></li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search..">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
+        <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+              </button>
+            {% load static %}
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/Logo.png' %}" alt="BookSwap" id="logo"/></a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'browse' %}">Browse</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'profileSelf' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+              </ul>
+          </div>
         </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    </nav>
   
 <div class="container text-center">    
   <div class="row">
@@ -96,7 +114,6 @@
               <p contenteditable="false">
               	<strong>College/University:</strong> University of Massachusetts Amherst<br>
               	<strong>About me:</strong> I like books and I like trading books and I want to trade books that I have for books that you have if the books that you have are good books<br>
-              	<strong>Favorite Genre:</strong> Fan fiction
               </p>
               <button type="button" class="btn btn-default btn-sm">
                  Edit

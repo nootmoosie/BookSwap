@@ -27,3 +27,10 @@ def browse(request):
 		'browse.html',
 		context={},
 		)
+
+def profileSelf(request):
+	return render(
+		request,
+		'profileSelf.html',
+		context={},
+		)
