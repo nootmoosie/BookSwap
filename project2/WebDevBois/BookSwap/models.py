@@ -62,7 +62,6 @@ class Book(models.Model):
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
     for_class = models.CharField('Class', max_length=200, help_text='Enter which class this textbook is for.', default='Not for a class.')
-    book_pic = models.ImageField(upload_to = 'book_imgs/', default = 'book_imgs/default_book.jpg')
 
     def __str__(self):
         """
