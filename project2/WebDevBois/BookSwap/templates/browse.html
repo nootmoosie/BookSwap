@@ -24,18 +24,12 @@
       min-height:200px;
   }
   .carousel {
-  	/*width: 100%;*/
+  	width: 130%;
   }
 
   .btn .btn-info {
   	padding-bottom: 10px;
   }
-  .peopleCarouselImg img {
-    width: auto;
-    height: 600px;
-    max-height: 600px;
-  }
-
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
@@ -88,8 +82,8 @@
 
 
 <div class="row">
-  <div class="col-sm-3 col-md-2">
-<div class="btn-group-vertical" data-toggle="buttons" style="text-align: center; width: 100%">
+  <div class="col-sm-3 col-md-1">
+<div class="btn-group-vertical" data-toggle="buttons">
 	  <h3>Filter Choices</h3>
 	  <label class="btn btn-info">
 	    <input type="checkbox" checked autocomplete="off"> Fantasy
@@ -163,25 +157,56 @@
 	</div>
   </div>
 
- 
+  <div class="col-sm-6 col-md-2 btn-group-vertical"> 
+  	<h3>Owner Info</h3>
+  	<img src="https://i.imgur.com/kDvRIjR.png" style="width:90%" alt="Image">
+  	<label class="btn btn-primary">
+  		Daho Inoraha
+  	</label>
+  	<p> Location:  <br> UMass Amherst</p>
 
-  <div class="col-sm-12 col-md-8  ">
-  	<div class = "container-fluid" style=" text-align: center;">
+  	<a href="https://www.google.com/maps/place/University+of+Massachusetts+Amherst/@42.3911569,-72.5289008,17z/data=!3m1!4b1!4m5!3m4!1s0x89e6d273e4f0f865:0xa0d6586089148e05!8m2!3d42.3911569!4d-72.5267121" title=""><img src="https://i.imgur.com/KokzlKU.png" class="img-responsive" style="width:90%"> Google Maps</a>
 
+
+  	<h4>Other Owners</h4>
+
+  	<label class="btn btn-primary">
+  		Jacob James
+  	</label>
+  	<label class="btn btn-primary">
+  		John Jeremies
+  	</label>
+  	<label class="btn btn-primary">
+  		Jack Jones
+  	</label>
+  	<label class="btn btn-primary">
+  		Jeff Jefferson
+  	</label>
+  	<label class="btn btn-primary">
+  		Jedediah Jet
+  	</label>
+  	<label class="btn btn-primary">
+  		Bob
+  	</label>
+
+  </div>
+
+  <div class="col-sm-12 col-md-7">
+  	<div class = "container-fluid">
   	<h3> Browse Books!</h3>
   	<div id="myCarousel" class="carousel slide">
 	    <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-      <div class="item active peopleCarouselImg">
-       <img src="https://freedownloadpsd.com/wp-content/uploads/2017/07/Book-Cover-Mockup-Free-PSD-Template-Cover.jpg" alt="Image">
+      <div class="item active">
+       <img src="https://i.imgur.com/Itlu1v5.jpg" style="width:35%" alt="Image">
         <div class="carousel-caption">
           <h3><a href="https://i.imgur.com/Itlu1v5.jpg"> Marriage, a History</a></h3>
           <p>Stephanie Coontz</p>
           <p>(The above link will lead to a page with more info on the book and what the owner is looking for) </p>
         </div>      
       </div>
-	      <div class="item peopleCarouselImg">
-        <img src="https://i.imgur.com/1D9rPU4.jpg" alt="Image">
+	      <div class="item">
+        <img src="https://i.imgur.com/1D9rPU4.jpg" style="width:35%" alt="Image">
         <div class="carousel-caption">
           <h3><a href="https://i.imgur.com/1D9rPU4.jpg"> The Complete Vegetarian Cookbook </a></h3>
           <p>America's Test Kitchen</p>
@@ -202,40 +227,6 @@
   	  </div>
 
 	</div>
-
-   <div class="col-sm-8 col-md-2 btn-group-vertical" style="text-align: center"> 
-    <h3>Owner Info</h3>
-    <img src="https://i.imgur.com/kDvRIjR.png" style="width:90%" alt="Image">
-    <label class="btn btn-primary">
-      Daho Inoraha
-    </label>
-    <p> Location:  <br> UMass Amherst</p>
-
-    <a href="https://www.google.com/maps/place/University+of+Massachusetts+Amherst/@42.3911569,-72.5289008,17z/data=!3m1!4b1!4m5!3m4!1s0x89e6d273e4f0f865:0xa0d6586089148e05!8m2!3d42.3911569!4d-72.5267121" title=""><img src="https://i.imgur.com/KokzlKU.png" class="img-responsive" style="width:90%"> Google Maps</a>
-
-
-    <h4>Other Owners</h4>
-
-    <label class="btn btn-primary">
-      Jacob James
-    </label>
-    <label class="btn btn-primary">
-      John Jeremies
-    </label>
-    <label class="btn btn-primary">
-      Jack Jones
-    </label>
-    <label class="btn btn-primary">
-      Jeff Jefferson
-    </label>
-    <label class="btn btn-primary">
-      Jedediah Jet
-    </label>
-    <label class="btn btn-primary">
-      Bob
-    </label>
-
-  </div>
 </div>
 
 
