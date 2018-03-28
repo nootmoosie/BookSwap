@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>BookSwap Browse</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Graduate' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Spectral SC' rel='stylesheet'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% extends "base_generic.html" %}
 
-  {% load static %}
-  <link rel="stylesheet" href= "{% static 'css/style.css' %}">
-  
+{% block title %}<title>BookSwap|Browse</title>{% endblock %}  
 
+
+{% block style %}
   <style>
 
   body
@@ -72,33 +62,10 @@
     @media only screen and (max-width: 479px) {}
 
   </style>
-</head>
-<body>
+  {% endblock %}
 
-<nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-              </button>
-            {% load static %}
-            <a class="navbar-brand" href="./index.html"><img src="{% static 'images/Logo.png' %}" alt="BookSwap" id="logo"/></a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'browse' %}">Browse</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              </ul>
-          </div>
-        </div>
-    </nav>
+
+{% block content %}
 
 
 <div class="row">
@@ -252,40 +219,4 @@
   </div>
 </div>
 
-
-<footer class="container-fluid text-center">
-  <p>WEB Dev Boys Copyright 2018</p>
-</footer>
-
-</body>
-</html>
-
-
-
-
-
-
-<!-- This will be used in the page where we should more info about the book -->
-
-
-<!-- <div class="container text-center">    
-  <h3>More Info on Current Book</h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="https://i.imgur.com/QTE63JO.jpg" class="img-responsive" style="width:150px" style="height:80px" alt="Image">
-      <p>Picture of current book</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="https://i.imgur.com/iN0FH4H.jpg" class="img-responsive" style="width:150px" style="height:80px" alt="Image">
-      <p>Another picture of current book</p>    
-    </div>
-    <div class="col-sm-4">
-      <div class="well">
-       <p>Book's blurb</p>
-      </div>
-      <div class="well">
-       <p>Links to popular reviews of the book</p>
-      </div>
-    </div>
-  </div>
-</div><br> -->
+{% endblock %}
