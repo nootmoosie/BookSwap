@@ -71,7 +71,7 @@
 		        	<span class="icon-bar"></span>                        
 		      		</button>
 		      	{% load static %}
-		      	<a class="navbar-brand" href="./index.html"><img src="{% static 'images/Logo.png' %}" alt="BookSwap" id="logo"/></a>
+		      	<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/Logo.png' %}" alt="BookSwap" id="logo"/></a>
 		    	</div>
 		    	<div class="collapse navbar-collapse" id="myNavbar">
 			      	<ul class="nav navbar-nav">
@@ -80,8 +80,7 @@
 			        	<li><a href="#">Contact Us</a></li>
 			      	</ul>
 			        <ul class="nav navbar-nav navbar-right">
-			      		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			      		<li><a href="{% url 'profileSelf' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 			      	</ul>
 		    	</div>
 		    </div>
