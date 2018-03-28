@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    nav ul{
+      list-style-type:none;
+      list-style-position:outside;
+      padding-right:3em;
+      
+
+    }
+
+    li{
+      margin:10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <h2>Daho Inoraha</h2>
+        <img src="https://i.imgur.com/kDvRIjR.png" class="img-circle" height="100" width="100" alt="Avatar">
+      </div>
+      <div class="well">
+        <h3>Books I Want</h3>
+        <nav>
+        	<ul>
+          		<li>How To Do Things Good</li>
+                <li>Being More Smarter</li>
+                <li>Good Dogs</li>
+                <li>Better Dogs</li>
+                <li>How To Be Less Dumb</li>
+                <li>HTML For Dummies</li>
+                <li>Harry Potter Fan Fiction</li>                     
+        	</ul>
+       </nav>
+      </div>
+      <div>
+        <button type=button>Add title</button>
+      </div>
+    </div>
+    <div class="col-sm-7">
+    
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <p contenteditable="false">
+              	<strong>College/University:</strong> University of Massachusetts Amherst<br>
+              	<strong>About me:</strong> I like books and I like trading books and I want to trade books that I have for books that you have if the books that you have are good books<br>
+              	<strong>Favorite Genre:</strong> Fan fiction
+              </p>
+              <button type="button" class="btn btn-default btn-sm">
+                 Edit
+              </button>     
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+       <div class="col-sm-12">
+	       <div class="well">
+	       	 <h2>Books I Have</h2>
+           <input type="button" class="button" onclick="location.href='./addBook.html';" value="Add Book" />
+           <!-- <button class="button">Add book</button> -->
+	       </div>
+	   </div>
+
+       <div class="col-sm-3">
+
+          <div class="well">
+           <p>Moby Dick</p>
+           <img src="http://3.bp.blogspot.com/_XdP6Lp2ceqY/S_lRFqEJmQI/AAAAAAAASQA/pYrvef5lf8c/s1600/mobydick_cover3_web.jpg" class="img-square" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p class="text-left"><Strong>Author:</Strong> Herman Melville<br>
+  			   <Strong>Condition:</Strong> Good<br>
+  			   <Strong>My Rating:</Strong> 5/5<br>
+  			   <Strong>My Review:</Strong> This was a good book because I really like whales.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>Harry Potter and the Prisoner of Azkaban</p>
+           <img src="https://vignette.wikia.nocookie.net/harrypotter/images/1/11/Prisoner_of_Azkaban_cover.jpg/revision/latest/scale-to-width-down/325?cb=20070328184627" class="img-square" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+             <p class="text-left"><Strong>Author:</Strong> J. K. Rowling<br>
+               <Strong>Condition:</Strong> New<br>
+  			   <Strong>My Rating:</Strong> 5/5<br>
+  			   <Strong>My Review:</Strong> This is one of my favorite books because magic is dope. If you think magic is dope you will probably love this book too
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>The Catcher and The Rye</p>
+           <img src="https://images-na.ssl-images-amazon.com/images/I/51ZxSRLRUpL._SX305_BO1,204,203,200_.jpg" class="img-square" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+             <p class="text-left"><Strong>Author:</Strong> J. D. Salinger<br>
+               <Strong>Condition:</Strong> Okay<br>
+  			   <Strong>My Rating:</Strong> 1/5<br>
+  			   <Strong>My Review:</Strong> This is one of the best books of all time, I hated it. But still you should read it 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>The Great Gatsby</p>
+           <img src="https://img.etsystatic.com/il/2232e6/693529905/il_570xN.693529905_38fw.jpg" class="img-square" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p class="text-left"><Strong>Author:</Strong> J. D. Salinger<br>
+               <Strong>Condition:</Strong> Good<br>
+  			   <Strong>My Rating:</Strong> 4/5<br>
+  			   <Strong>My Review:</Strong> This book made me feel things I didn't want to feel. If you like feeling things you don't want to feel then this is the book for you
+            </p>
+          </div>
+        </div>
+      </div>    
+      <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav> 
+    </div>
+    <div class="col-sm-2 well">
+      <div class="thumbnail">
+        <h3>Reputation:</h3>
+        <img src="https://booksnacksblog.files.wordpress.com/2015/09/1-5-stars.png?w=1220&h=&zoom=2" alt="Paris" width="400" height="300">
+      </div>      
+    </div>
+  </div>
+</div>
+<div class="col-sm-12 well">
+	<h3>Comments</h3>
+	<div class=well>
+		<p class="text-left"><Strong>User:</Strong> John Lastname<br>
+			<Strong>Comment:</Strong> I will never trade with Daho again, he is mean and made me feel bad about the books that I like.</p>
+	</div>
+	<div class=well>
+		<p class="text-left"><Strong>User:</Strong> Firstname Lastname<br>
+			<Strong>Comment:</Strong> Had no problems making trade.</p>
+	</div>
+ <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</div>
+<footer class="container-fluid text-center">
+  <p>College Book Swap</p>
+</footer>
+
+</body>
+</html>

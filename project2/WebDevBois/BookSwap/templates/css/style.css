@@ -1,0 +1,95 @@
+body {
+	font-family: 'Spectral SC';
+	color: black;
+	background-color: #555;
+}
+
+#logo{
+	text-align: center;
+	width: 150px;
+	/*font-size: 80px;*/
+	/*margin-bottom: 40px;*/
+}
+
+#addBookLogo{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 30px;
+}
+#BookForm{
+	text-align: center;
+	font-size: 26px;
+}
+#BookForm .TextIn {
+	font-size: 28px;
+	width: 75%;
+}
+input {
+	margin-bottom: 15px;
+}
+#comments{
+	text-align: center;
+	font-size: 28px;
+}
+textarea{
+	width: 65%;
+	margin-bottom: 30px;
+}
+#submitBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#submitBtn {
+	width: 30%;
+}
+#cancelBtnWrap {
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+#cancelBtn {
+	width: 30%;
+}
+#addBookImage{
+	margin-bottom: 15px;
+}
+#fileupload{
+	text-align: center;
+	margin-left: 20px;
+}
+
+
+
+h2
+{
+	color: white;
+	text-align: center;
+}
+
+.btn-danger
+{
+	margin-left: 20px;
+	border-radius: 49%;
+}
+
+.input-group
+{
+	margin-left: 100px;
+}
+
+.jumbotron
+{
+	font-family: 'Graduate';
+	background-color: #D0D3D4;
+}
+
+.navbar-brand, .navbar-nav li a 
+{
+	font-size: 1.2em;
+}
+
+.panel-body img
+{
+	height: 400px;
+}
