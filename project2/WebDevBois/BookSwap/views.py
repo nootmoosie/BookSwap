@@ -8,7 +8,8 @@ def index(request):
     """
     View function for home page of site.
     """
-    queryset = BookInstance.objects.all()[:3]
+    user = User.objects.get(first_name="Jack")
+    queryset = BookInstance.objects.filter(owner = user.id)[1:4]
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,

@@ -46,6 +46,30 @@
 	{
 		height: 400px;
 	}
+
+	a:link {
+    color: white; 
+    background-color: transparent; 
+    text-decoration: none;
+	}
+
+	a:visited {
+	    color: pink;
+	    background-color: transparent;
+	    text-decoration: none;
+	}
+
+	a:hover {
+	    color: red;
+	    background-color: transparent;
+	    text-decoration: underline;
+	}
+
+	a:active {
+	    color: yellow;
+	    background-color: transparent;
+	    text-decoration: underline;
+	}
 	</style>
 	{% endblock %}
 
@@ -71,7 +95,7 @@
 		    	{% for bookInstance in queryset %}
 			    <div class="col-sm-4">
 			        <div class="panel panel-primary">
-				        <div class="panel-heading">{{bookInstance.book.title}}</div>
+				        <div class="panel-heading">{{bookInstance.book.title}} <br><a href="{% url 'profileOther' %}">View the user that owns this book</a></div>
 				        <div class="panel-body"><img src="{{ bookInstance.instance_pic.url }}" alt="img" class="img-responsive" style="width:100%" alt="Numerical_Methods"></div>
 						<!-- <div class="panel-footer">Book Genre: {{bookInstance.book.genre.name}}</div> -->
 						<div class="panel-footer">Book Genre: 
