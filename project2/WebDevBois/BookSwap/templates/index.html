@@ -67,30 +67,19 @@
 		<div class="container">
 			<h2> Recommended for you </h2><br>
 		    <div class="row">
+
+		    	{% for bookInstance in queryset %}
 			    <div class="col-sm-4">
 			        <div class="panel panel-primary">
-				        <div class="panel-heading">A First Course in Numerical Methods</div>
-				        {% load static %}
-				        <div class="panel-body"><img src="{% static 'images/Math551.jpg' %}" class="img-responsive" style="width:100%" alt="Numerical_Methods"></div>
-				        <div class="panel-footer">Course Subject: Mathematics</div>
+				        <div class="panel-heading">{{bookInstance.book.title}}</div>
+
+				        <div class="panel-body"><img src="{{ bookInstance.instance_pic.url }}" alt="img" class="img-responsive" style="width:100%" alt="Numerical_Methods"></div>
+				        <div class="panel-footer">Book Genre: {{bookInstance.book.genre.name}}</div>
 			        </div>
 			    </div>
-			    <div class="col-sm-4"> 
-			        <div class="panel panel-danger">
-				        <div class="panel-heading">Algorithm Design</div>
-				        {% load static %}
-				        <div class="panel-body"><img src="{% static 'images/CS311.jpg' %}" class="img-responsive" style="width:100%" alt="Algorthm_Design"></div>
-				        <div class="panel-footer">Course Subject: Computer Science</div>
-			        </div>
-			    </div>
-			    <div class="col-sm-4"> 
-			        <div class="panel panel-success">
-				        <div class="panel-heading">Abstract Algebra</div>
-				        {% load static %}
-				        <div class="panel-body"><img src="{% static 'images/Math411.jpg' %}" class="img-responsive" style="width:100%" alt="Abstract_Algebra"></div>
-				        <div class="panel-footer">Course Subject: Mathematics</div>
-			        </div>
-			    </div>
+
+			    {% endfor %}
+
 		    </div>
 		</div><br>
 		{% endblock %}
