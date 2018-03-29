@@ -1,72 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Graduate' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Spectral SC' rel='stylesheet'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% extends "base_generic.html" %}
 
-  {% load static %}
-  <link rel="stylesheet" href= "{% static 'css/style.css' %}">
-  
-  <style>    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
+{% block style %}
+<style>
+li{
+	margin: 10px 0;
+}
+</style>
+{% endblock %}
 
-    body{
-      background-color: #633974
-    }
-    
-    nav ul{
-      list-style-type:none;
-      list-style-position:outside;
-      padding-right:3em;
-      
-
-    }
-
-  </style>
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-              </button>
-            {% load static %}
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/Logo.png' %}" alt="BookSwap" id="logo"/></a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'browse' %}">Browse</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'profileSelf' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              </ul>
-          </div>
-        </div>
-    </nav>
-  
+{% block content %}
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
         <h2 style="color: black">Daho Inoraha</h2>
-        <img src="https://i.imgur.com/kDvRIjR.png" class="img-circle" height="100" width="100" alt="Avatar">
+        
       </div>
       <div class="well">
         <h3>Books I Want</h3>
@@ -181,46 +129,10 @@
           </div>
         </div>
       </div>    
-      <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav> 
+   
     </div>
-    <div class="col-sm-2 well">
-      <div class="thumbnail">
-        <h3>Reputation:</h3>
-        <img src="https://booksnacksblog.files.wordpress.com/2015/09/1-5-stars.png?w=1220&h=&zoom=2" alt="Paris" width="400" height="300">
-      </div>      
-    </div>
+   
   </div>
 </div>
-<div class="col-sm-12 well">
-	<h3>Comments</h3>
-	<div class=well>
-		<p class="text-left"><Strong>User:</Strong> John Lastname<br>
-			<Strong>Comment:</Strong> I will never trade with Daho again, he is mean and made me feel bad about the books that I like.</p>
-	</div>
-	<div class=well>
-		<p class="text-left"><Strong>User:</Strong> Firstname Lastname<br>
-			<Strong>Comment:</Strong> Had no problems making trade.</p>
-	</div>
- <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</div>
-<footer class="container-fluid text-center">
-  <p>College Book Swap</p>
-</footer>
+{% endblock %}
 
-</body>
-</html>
