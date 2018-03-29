@@ -72,9 +72,13 @@
 			    <div class="col-sm-4">
 			        <div class="panel panel-primary">
 				        <div class="panel-heading">{{bookInstance.book.title}}</div>
-
 				        <div class="panel-body"><img src="{{ bookInstance.instance_pic.url }}" alt="img" class="img-responsive" style="width:100%" alt="Numerical_Methods"></div>
-				        <div class="panel-footer">Book Genre: {{bookInstance.book.genre.name}}</div>
+						<!-- <div class="panel-footer">Book Genre: {{bookInstance.book.genre.name}}</div> -->
+						<div class="panel-footer">Book Genre: 
+						{% for genre in bookInstance.book.genre.all %}
+							<p> {{ genre.name }} </p>
+						{% endfor %}
+						</div>
 			        </div>
 			    </div>
 
