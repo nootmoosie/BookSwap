@@ -1,7 +1,8 @@
 body {
 	font-family: 'Spectral SC';
 	color: black;
-	background-color: #555;
+	/*background-color: #555;*/
+	background-color: #633974;
 }
 
 #logo{
@@ -81,7 +82,8 @@ h2
 .jumbotron
 {
 	font-family: 'Graduate';
-	background-color: #D0D3D4;
+/*	background-color: #D0D3D4;
+*/
 }
 
 .navbar-brand, .navbar-nav li a 
