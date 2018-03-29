@@ -35,8 +35,10 @@ def addBook(request):
         context={},
         )
 def profileOther(request):
+	user = User.objects.get(first_name="Nate")
+	books = BookInstance.objects.filter(owner = user.id)
 	return render(
 		request,
 		'profileOther.html',
-		context={},
+		context={'user':user, 'books':books},
 		)

@@ -23,21 +23,11 @@
     <div class="row">
       <div class="col-sm-3 well">
         <div class="well">
-          <p>Bob Jackson</p>
+          <p>{{user.first_name}} {{user.last_name}}</p>
           <!-- <img src="images/ProPic.jpg" class="img-circle" height="95" width="95" alt="Avatar"> -->
           <p><a href="#">Send Message</a></p>
         </div>
-        <div class="well">
-          <p><a href="#">Favorite Genres</a></p>
-          <p>
-            <span class="label label-default">Computer Science</span>
-            <span class="label label-primary">SciFi</span>
-            <span class="label label-success">Mystery</span>
-            <span class="label label-info">Romance</span>
-            <span class="label label-warning">Geometry</span>
-            <span class="label label-danger">History</span>
-          </p>
-        </div>
+        
         <div class="alert alert-success fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
           <p><strong>Hey!</strong></p>
@@ -54,45 +44,32 @@
           <div class="col-sm-12">
             <div class="panel panel-default text-left">
               <div class="panel-body">
-                <p contenteditable="true">Hello everyone! I am a junior computer science major at UMass looking to swap some books. If any of my offers interest you, message me so we can make a deal and meet up!</p>   
+                <p contenteditable="true">{{user.bio}}</p>   
               </div>
             </div>
           </div>
         </div>
         <b><font size="2" color="white">Books For Swapping:</font></b>
+
+        {% for bookInst in books %}
         <div class="row">
           <div class="col-sm-3">
             <div class="well">
-             <p>Algorithm Design</p>
+             <p>{{bookInst.book.title}}</p>
              <img src="images/CS311.jpg" height="85" width="85" alt="Book">
             </div>
           </div>
           <div class="col-sm-9">
             <div class="well">
-              <p>Just finished up Algorithms with a whopping D-... Looking to swap this book for a Geo101 book or any exotic cook books. If you don't have either of these, I'd be open to selling it for $40 (or best offer). Send me a message if interested!</p>
+              <p>{{bookInst.comment}}</p>
             <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
             </button>
             </div>   
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-             <p>Abstract Algebra</p>
-             <img src="images/Math411.jpg" height="85" width="75" alt="Book">
-            </div>
-          </div>
-          <div class="col-sm-9">
-            <div class="well">
-              <p>Looking for someone to trade my Abstract Algebra book with. I've decided to cut math out of my life entirely, so I will trade for legitimately any book without numbers in it. I would also take $68 cash or the best offer. Hmu if you want to meet up.</p>
-            <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
-            </button>
-            </div>   
-          </div>
-        </div>
-        
+        {% endfor %}
+                
         <b><font size="2" color="white">User Reviews:</font></b> 
         <div class="row">
           <div class="col-sm-3">
