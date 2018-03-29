@@ -30,12 +30,13 @@
         
         <div class="alert alert-success fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          <p><strong>Hey!</strong></p>
-          This person is trading the following books that are on your wishlist:
+          <p><strong>Books on {{user.first_name}}'s wishlist:</strong></p>
         </div>
-        <p><a href="#">Moby Dick</a></p>
-        <p><a href="#">Math 441</a></p>
-        <p><a href="#">CS 311</a></p>
+        {% for book in wishlist %}
+        <li>{{book.title}} -</li>
+        <p> {{book.author}}</p>
+        <p> </p>
+        {% endfor %}
       </div>
       <div class="col-sm-7">
       
@@ -57,6 +58,7 @@
             <div class="well">
              <p>{{bookInst.book.title}}</p>
              <img src="images/CS311.jpg" height="85" width="85" alt="Book">
+             <p>Condition: {{bookInst.book_condition}}
             </div>
           </div>
           <div class="col-sm-9">
