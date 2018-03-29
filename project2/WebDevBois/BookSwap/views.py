@@ -25,10 +25,12 @@ def profileSelf(request):
 	user = User.objects.get(first_name="Nate")
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	booksWant = user.books_wanted.all()
+	recommended = Book.objects.all()[4] #This needs fixing
+	num_postings = len(BookInstance.objects.filter(book = recommended))
 	return render(
 		request,
 		'profileSelf.html',
-		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer},
+		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer, 'recommended':recommended,'num_postings':num_postings},
 		)
 def addBook(request):
 	return render(
@@ -40,9 +42,12 @@ def profileOther(request):
 	user = User.objects.get(first_name="Jack")
 	books = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
+	recommended = Book.objects.all()[3] #This needs fixing
+	num_postings = len(BookInstance.objects.filter(book = recommended))
 	return render(
 		request,
 		'profileOther.html',
+<<<<<<< HEAD
 		context={'user':user, 'books':books, 'wishlist':wishlist},
 		)
 def contact(request):
@@ -50,4 +55,7 @@ def contact(request):
 		request,
 		'contact.html',
 		context={},
+=======
+		context={'user':user, 'books':books, 'wishlist':wishlist, 'recommended':recommended,'num_postings':num_postings},
+>>>>>>> 86829ab62cc673c9955c69555722a7c3f2706ca8
 		)

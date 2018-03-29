@@ -90,11 +90,27 @@
       
  
       {% endfor %}
-             
+      
          
     </div>
-   
+    
   </div>
+  <div class="col-sm-2 well">
+        <div class="thumbnail">
+          <p>Recommended:</p>
+          <img src="images/MobyDick.jpg" alt="Book" width="400" height="300">
+          <p><strong>{{recommended.title}}</strong></p>
+          <p>{{num_postings}} Postings</p>
+          <a href="{% url 'browse' %}" class="btn btn-primary">See Offers</a> <!-- this needs fixing -->
+        </div> 
+        <div class="thumbnail">
+          {% load static %}
+          <img src="{% static 'images/FakeAd1.jpg' %}" alt="Ad" width="400" height="300">
+        </div>             
+        <div class="thumbnail">
+          <img src="{% static 'images/FakeAd2.jpg' %}" alt="Ad" width="400" height="300">
+        </div>  
+      </div>
 </div>
 {% endblock %}
 

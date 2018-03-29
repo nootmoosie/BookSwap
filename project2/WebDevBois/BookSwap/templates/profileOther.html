@@ -97,9 +97,9 @@
         <div class="thumbnail">
           <p>Recommended:</p>
           <img src="images/MobyDick.jpg" alt="Book" width="400" height="300">
-          <p><strong>Moby Dick</strong></p>
-          <p>13 Postings</p>
-          <button class="btn btn-primary">See Offers</button>
+          <p><strong>{{recommended.title}}</strong></p>
+          <p>{{num_postings}} Postings</p>
+          <a href="{% url 'browse' %}" class="btn btn-primary">See Offers</a> <!-- this needs fixing -->
         </div> 
         <div class="thumbnail">
           {% load static %}
