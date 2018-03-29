@@ -23,17 +23,20 @@ def browse(request):
 		)
 
 def profileSelf(request):
+	user = User.objects.get(first_name="Nate")
+	booksOffer = BookInstance.objects.filter(owner = user.id)
+	booksWant = user.books_wanted.all()
 	return render(
 		request,
 		'profileSelf.html',
-		context={},
+		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer},
 		)
 def addBook(request):
-    return render(
-        request,
-        'addBook.html',
-        context={},
-        )
+	return render(
+		request,
+		'addBook.html',
+		context={},
+		)
 def profileOther(request):
 	user = User.objects.get(first_name="Nate")
 	books = BookInstance.objects.filter(owner = user.id)

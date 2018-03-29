@@ -13,21 +13,20 @@ li{
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
-        <h2 style="color: black">Daho Inoraha</h2>
+        <h2 style="color: black">{{user.first_name}} {{user.last_name}}</h2>
         
       </div>
       <div class="well">
         <h3>Books I Want</h3>
+        
         <nav>
         	<ul>
-          		<li>How To Do Things Good</li>
-                <li>Being More Smarter</li>
-                <li>Good Dogs</li>
-                <li>Better Dogs</li>
-                <li>How To Be Less Dumb</li>
-                <li>HTML For Dummies</li>
-                <li>Harry Potter Fan Fiction</li>                     
-        	</ul>
+       		{% for book in booksWant %}
+        	
+          		<li>{{book.title}}</li>
+                
+        	{% endfor %}
+    		</ul>
        </nav>
       </div>
       <div>
@@ -41,8 +40,8 @@ li{
           <div class="panel panel-default text-left">
             <div class="panel-body">
               <p contenteditable="false">
-              	<strong>College/University:</strong> University of Massachusetts Amherst<br>
-              	<strong>About me:</strong> I like books and I like trading books and I want to trade books that I have for books that you have if the books that you have are good books<br>
+              	<strong>College/University:</strong> {{user.university}}<br>
+              	<strong>About me:</strong> {{user.bio}}<br>
               </p>
               <button type="button" class="btn btn-default btn-sm">
                  Edit
@@ -56,79 +55,32 @@ li{
        <div class="col-sm-12">
 	       <div class="well">
 	       	 <h2 style="color: black">Books I Have</h2>
-           <input type="button" class="button" onclick="location.href='./addBook.html';" value="Add Book" />
-           <!-- <button class="button">Add book</button> -->
+           <input type="button" class="button" onclick="location.href={% url 'addBook' %};" value="Add Book" />
 	       </div>
 	   </div>
 
+	   {% for inst in booksOffer %}   
        <div class="col-sm-3">
-
+		    	
           <div class="well">
-           <p>Moby Dick</p>
-           <img src="http://3.bp.blogspot.com/_XdP6Lp2ceqY/S_lRFqEJmQI/AAAAAAAASQA/pYrvef5lf8c/s1600/mobydick_cover3_web.jpg" class="img-square" height="55" width="55" alt="Avatar">
+           <p>{{inst.book.title}}</p>
+           <!-- img placeholder -->
           </div>
         </div>
         <div class="col-sm-9">
           <div class="well">
-            <p class="text-left"><Strong>Author:</Strong> Herman Melville<br>
-  			   <Strong>Condition:</Strong> Good<br>
-  			   <Strong>My Rating:</Strong> 5/5<br>
-  			   <Strong>My Review:</Strong> This was a good book because I really like whales.
+            <p class="text-left"><Strong>Author:</Strong> {{inst.book.author}}<br>
+  			   <Strong>Condition:</Strong> {{inst.book_condition}}/5<br>
+  			 <!--   <Strong>My Rating:</Strong> 5/5<br> -->
+  			   <Strong>My Review:</Strong> {{inst.comment}}
             </p>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Harry Potter and the Prisoner of Azkaban</p>
-           <img src="https://vignette.wikia.nocookie.net/harrypotter/images/1/11/Prisoner_of_Azkaban_cover.jpg/revision/latest/scale-to-width-down/325?cb=20070328184627" class="img-square" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-             <p class="text-left"><Strong>Author:</Strong> J. K. Rowling<br>
-               <Strong>Condition:</Strong> New<br>
-  			   <Strong>My Rating:</Strong> 5/5<br>
-  			   <Strong>My Review:</Strong> This is one of my favorite books because magic is dope. If you think magic is dope you will probably love this book too
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>The Catcher and The Rye</p>
-           <img src="https://images-na.ssl-images-amazon.com/images/I/51ZxSRLRUpL._SX305_BO1,204,203,200_.jpg" class="img-square" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-             <p class="text-left"><Strong>Author:</Strong> J. D. Salinger<br>
-               <Strong>Condition:</Strong> Okay<br>
-  			   <Strong>My Rating:</Strong> 1/5<br>
-  			   <Strong>My Review:</Strong> This is one of the best books of all time, I hated it. But still you should read it 
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>The Great Gatsby</p>
-           <img src="https://img.etsystatic.com/il/2232e6/693529905/il_570xN.693529905_38fw.jpg" class="img-square" height="55" width="55" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p class="text-left"><Strong>Author:</Strong> J. D. Salinger<br>
-               <Strong>Condition:</Strong> Good<br>
-  			   <Strong>My Rating:</Strong> 4/5<br>
-  			   <Strong>My Review:</Strong> This book made me feel things I didn't want to feel. If you like feeling things you don't want to feel then this is the book for you
-            </p>
-          </div>
-        </div>
-      </div>    
+      
+ 
+      {% endfor %}
+     
+     
    
     </div>
    
