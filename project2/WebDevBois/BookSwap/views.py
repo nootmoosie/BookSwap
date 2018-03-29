@@ -45,3 +45,9 @@ def profileOther(request):
 		'profileOther.html',
 		context={'user':user, 'books':books, 'wishlist':wishlist},
 		)
+def contact(request):
+	return render(
+		request,
+		'contact.html',
+		context={},
+		)
