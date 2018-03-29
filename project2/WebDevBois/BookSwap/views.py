@@ -47,15 +47,12 @@ def profileOther(request):
 	return render(
 		request,
 		'profileOther.html',
-<<<<<<< HEAD
 		context={'user':user, 'books':books, 'wishlist':wishlist},
 		)
+
 def contact(request):
 	return render(
 		request,
 		'contact.html',
 		context={},
-=======
-		context={'user':user, 'books':books, 'wishlist':wishlist, 'recommended':recommended,'num_postings':num_postings},
->>>>>>> 86829ab62cc673c9955c69555722a7c3f2706ca8
 		)
