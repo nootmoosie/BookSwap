@@ -38,8 +38,9 @@ def addBook(request):
 def profileOther(request):
 	user = User.objects.get(first_name="Nate")
 	books = BookInstance.objects.filter(owner = user.id)
+	wishlist = user.books_wanted.all()
 	return render(
 		request,
 		'profileOther.html',
-		context={'user':user, 'books':books},
+		context={'user':user, 'books':books, 'wishlist':wishlist},
 		)
