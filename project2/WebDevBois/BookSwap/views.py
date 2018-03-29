@@ -16,7 +16,8 @@ def index(request):
     )
 
 def browse(request):
-    queryset = BookInstance.objects.all()[:]
+    Jack = User.objects.get(first_name="Jack")
+    queryset = BookInstance.objects.filter(owner = Jack.id)
     
     return render(request,'browse.html', context={'queryset':queryset},)
 
