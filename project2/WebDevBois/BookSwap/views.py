@@ -34,3 +34,10 @@ def profileSelf(request):
 		'profileSelf.html',
 		context={},
 		)
+
+def profileOther(request):
+	return render(
+		request,
+		'profileOther.html',
+		context={},
+		)
