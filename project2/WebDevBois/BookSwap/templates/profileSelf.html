@@ -1,12 +1,18 @@
 {% extends "base_generic.html" %}
 
 {% block style %}
-<style>
-li{
-	margin: 10px 0;
-}
-</style>
-{% endblock %}
+  <style>    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    body {
+      background-color: #633974;  
+    }
+  </style>
+  {% endblock %}
 
 {% block content %}
 <div class="container text-center">    
@@ -14,6 +20,7 @@ li{
     <div class="col-sm-3 well">
       <div class="well">
         <h2 style="color: black">{{user.first_name}} {{user.last_name}}</h2>
+        <p>My Profile</p>
         
       </div>
       <div class="well">
@@ -72,16 +79,15 @@ li{
             <p class="text-left"><Strong>Author:</Strong> {{inst.book.author}}<br>
   			   <Strong>Condition:</Strong> {{inst.book_condition}}/5<br>
   			 <!--   <Strong>My Rating:</Strong> 5/5<br> -->
-  			   <Strong>My Review:</Strong> {{inst.comment}}
+  			   <Strong>Comments:</Strong> {{inst.comment}}
             </p>
           </div>
         </div>
       
  
       {% endfor %}
-     
-     
-   
+             
+         
     </div>
    
   </div>
