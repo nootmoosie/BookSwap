@@ -40,8 +40,10 @@ def profileOther(request):
 	user = User.objects.get(first_name="Jack")
 	books = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
+	recommended = Book.objects.all()[3] #This needs fixing
+	num_postings = len(BookInstance.objects.filter(book = recommended))
 	return render(
 		request,
 		'profileOther.html',
-		context={'user':user, 'books':books, 'wishlist':wishlist},
+		context={'user':user, 'books':books, 'wishlist':wishlist, 'recommended':recommended,'num_postings':num_postings},
 		)
