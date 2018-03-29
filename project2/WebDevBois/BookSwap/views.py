@@ -36,7 +36,7 @@ def addBook(request):
 		context={},
 		)
 def profileOther(request):
-	user = User.objects.get(first_name="Nate")
+	user = User.objects.get(first_name="Jack")
 	books = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
 	return render(
