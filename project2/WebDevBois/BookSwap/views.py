@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre, User
 from django.views import generic
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
@@ -27,24 +28,37 @@ def profileSelf(request):
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	booksWant = user.books_wanted.all()
 	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
+	
+	paginator = Paginator(booksOffer, 3)
+	page = request.GET.get('page', 1)
+	books = paginator.get_page(page)
+	
+	
+
 	return render(
 		request,
 		'profileSelf.html',
-		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer,
+		context={'user': user, 'booksWant': booksWant, 'books': books,
 		 'recommended':recommended[0],},
 		)
+
 def addBook(request):
 	return render(
 		request,
 		'addBook.html',
 		context={},
 		)
+
 def profileOther(request):
 	user = User.objects.get(first_name="Jack")
-	books = BookInstance.objects.filter(owner = user.id)
+	booksOffer = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
-	recommended = Book.objects.all()[3] #This needs fixing
-	num_postings = len(BookInstance.objects.filter(book = recommended))
+
+
+	paginator = Paginator(booksOffer, 3)
+	page = request.GET.get('page', 1)
+	books = paginator.get_page(page)
+
 	return render(
 		request,
 		'profileOther.html',
