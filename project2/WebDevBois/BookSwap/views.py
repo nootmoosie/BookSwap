@@ -16,11 +16,9 @@ def index(request):
     )
 
 def browse(request):
-	return render(
-		request,
-		'browse.html',
-		context={},
-		)
+    queryset = BookInstance.objects.all()[:]
+    
+    return render(request,'browse.html', context={'queryset':queryset},)
 
 def profileSelf(request):
 	return render(
