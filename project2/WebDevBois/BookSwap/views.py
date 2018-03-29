@@ -23,14 +23,15 @@ def browse(request):
 
 def profileSelf(request):
 	user = User.objects.get(first_name="Nate")
+	otherUser = User.objects.get(first_name="Jack")
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	booksWant = user.books_wanted.all()
-	recommended = Book.objects.all()[4] #This needs fixing
-	num_postings = len(BookInstance.objects.filter(book = recommended))
+	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
 	return render(
 		request,
 		'profileSelf.html',
-		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer, 'recommended':recommended,'num_postings':num_postings},
+		context={'user': user, 'booksWant': booksWant, 'booksOffer': booksOffer,
+		 'recommended':recommended[0],},
 		)
 def addBook(request):
 	return render(

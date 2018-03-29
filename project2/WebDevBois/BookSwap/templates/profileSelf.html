@@ -98,10 +98,9 @@
   <div class="col-sm-2 well">
         <div class="thumbnail">
           <p>Recommended:</p>
-          <img src="images/MobyDick.jpg" alt="Book" width="400" height="300">
-          <p><strong>{{recommended.title}}</strong></p>
-          <p>{{num_postings}} Postings</p>
-          <a href="{% url 'browse' %}" class="btn btn-primary">See Offers</a> <!-- this needs fixing -->
+          <p>Someone has <strong><em>{{recommended.book.title}}</strong></em></p>
+         
+          <a href="{% url 'profileOther' %}" class="btn btn-primary">Take a look</a> <!-- this needs fixing -->
         </div> 
         <div class="thumbnail">
           {% load static %}
