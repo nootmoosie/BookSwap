@@ -1,0 +1,113 @@
+{% extends "base_generic.html" %}
+
+	{% block style %}
+	<style>
+	body
+	{
+		font-family: 'Spectral SC';
+		background-color: #633974;  
+	}
+
+	h2
+	{
+		color: white;
+		text-align: center;
+	}
+
+	.btn-danger
+	{
+		margin-left: 20px;
+		border-radius: 49%;
+	}
+
+	.input-group
+	{
+		margin-left: 100px;
+	}
+
+	.jumbotron
+	{
+		font-family: 'Graduate';
+		background-color: #D0D3D4;
+		/*background-color: #C39BD3;*/  	
+	}
+
+	.navbar-brand, .navbar-nav li a 
+	{
+    	font-size: 1.2em;
+	}
+
+	footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+	.panel-body img
+	{
+		height: 400px;
+	}
+
+	a:link {
+    color: white; 
+    background-color: transparent; 
+    text-decoration: none;
+	}
+
+	a:visited {
+	    color: pink;
+	    background-color: transparent;
+	    text-decoration: none;
+	}
+
+	a:hover {
+	    color: red;
+	    background-color: transparent;
+	    text-decoration: underline;
+	}
+
+	a:active {
+	    color: yellow;
+	    background-color: transparent;
+	    text-decoration: underline;
+	}
+	</style>
+	{% endblock %}
+
+		{% block content %}
+		<div class = "jumbotron text-center">
+			<h1>College BookSwap</h1>
+			<form class="form-inline">
+    		<div class="input-group">
+      			<input type="search" class="form-control" size="50" placeholder="Find Books Near Me (Non-Functioning)" required>
+	      		<div class="input-group-btn">
+	        		<button type="button" class="btn btn-success">Search</button>
+	      		</div>
+    		</div>
+    		<!-- <a href="{% url 'browse' %}" class="btn btn-danger">Advanced</a>  -->
+    		<!-- fix this!! -->
+  			</form>
+		</div>
+
+		<div class="container">
+			<h2> Recommended for you </h2><br>
+		    <div class="row">
+
+		    	{% for bookInstance in queryset %}
+			    <div class="col-sm-4">
+			        <div class="panel panel-primary">
+				        <div class="panel-heading">{{bookInstance.book.title}} <br><a href="{% url 'profileOther' %}">View the user that owns this book</a></div>
+				        <div class="panel-body"><img src="https://i.imgur.com/0l2uZR9.jpg" alt="img" class="img-responsive" style="width:100%" alt="Numerical_Methods"></div>
+						<!-- <div class="panel-footer">Book Genre: {{bookInstance.book.genre.name}}</div> -->
+						<div class="panel-footer">Book Genre: 
+						{% for genre in bookInstance.book.genre.all %}
+							<p> {{ genre.name }} </p>
+						{% endfor %}
+						</div>
+			        </div>
+			    </div>
+
+			    {% endfor %}
+
+		    </div>
+		</div><br>
+		{% endblock %}

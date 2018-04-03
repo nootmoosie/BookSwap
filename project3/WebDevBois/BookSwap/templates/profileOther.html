@@ -1,0 +1,126 @@
+{% extends "base_generic.html" %}
+
+  {% block title %}
+    <title>BookSwap | Bob's Profile</title>
+  {% endblock %}
+ 
+  {% block style %}
+  <style>    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    body {
+      background-color: #633974;  
+    }
+  </style>
+  {% endblock %}
+    
+  {% block content %}
+  <div class="container text-center">    
+    <div class="row">
+      <div class="col-sm-3 well">
+        <div class="well">
+          <p>{{user.first_name}} {{user.last_name}}</p>
+          <!-- <img src="images/ProPic.jpg" class="img-circle" height="95" width="95" alt="Avatar"> -->
+          <p><a href="#">Send Message</a></p>
+        </div>
+        
+        <div class="alert alert-success fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <p><strong>Books on {{user.first_name}}'s wishlist:</strong></p>
+        </div>
+        {% for book in wishlist %}
+        <li>{{book.title}} -</li>
+        <p> {{book.author}}</p>
+        <p> </p>
+        {% endfor %}
+      </div>
+      <div class="col-sm-7">
+      
+        <b><font size="2" color="white">Bio:</font></b>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default text-left">
+              <div class="panel-body">
+               <p contenteditable="false">
+                <strong>College/University:</strong> {{user.university}}<br>
+                <strong>About me:</strong> {{user.bio}}<br>
+              </p>  
+              </div>
+            </div>
+          </div>
+        </div>
+        <b><font size="2" color="white">Books For Swapping:</font></b>
+
+        {% for bookInst in books %}
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+             <p>{{bookInst.book.title}}</p>
+             <img src="images/CS311.jpg" height="85" width="85" alt="Book">
+             
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p><Strong>Author:</Strong> {{bookInst.book.author}}<br>
+                 <Strong>Condition:</Strong> {{bookInst.book_condition}}/5<br>
+               <!--   <Strong>My Rating:</Strong> 5/5<br> -->
+                 <Strong>Comments:</Strong> {{bookInst.comment}}
+              </p>
+            <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
+            </button>
+            </div>   
+          </div>
+        </div>
+        {% endfor %}
+                
+        <div class="pagination">
+        <span class="step-links">
+        {% if books.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ books.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ books.number }} of {{ books.paginator.num_pages }}.
+        </span>
+
+        {% if books.has_next %}
+            <a href="?page={{ books.next_page_number }}">next</a>
+            <a href="?page={{ books.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        </span>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <!-- <div class="well">
+             <p><a href="#">John</a></p>
+             <img src="images/ProPic2.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+            </div> -->
+          </div>
+          <div class="col-sm-9">
+            <!-- <div class="well">
+              <p>Me and Bob traded iSpy books a few days ago. Quick and easy trade, I love my new book! 5 stars!</p>
+            </div> -->
+          </div>
+        </div>   
+      </div>
+      <div class="col-sm-2 well">
+        
+        <div class="thumbnail">
+          {% load static %}
+          <img src="{% static 'images/FakeAd1.jpg' %}" alt="Ad" width="400" height="300">
+        </div>             
+        <div class="thumbnail">
+          <img src="{% static 'images/FakeAd2.jpg' %}" alt="Ad" width="400" height="300">
+        </div>  
+      </div>
+    </div>
+  </div>
+  {% endblock %}
