@@ -1,0 +1,220 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>BookSwap|Browse</title>{% endblock %}  
+
+
+{% block style %}
+  <style>
+
+  body
+  {
+    font-family: 'Spectral SC';
+    background-color: #633974;  
+  }
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      margin: auto;
+      min-height:200px;
+  }
+  .carousel {
+    /*width: 100%;*/
+  }
+
+  .btn .btn-info {
+    padding-bottom: 10px;
+  }
+  .peopleCarouselImg img {
+    width: auto;
+    height: 600px;
+    max-height: 600px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  /* Smaller than standard 960 (devices and browsers) */
+    @media only screen and (max-width: 959px) {}
+
+    /* Tablet Portrait size to standard 960 (devices and browsers) */
+    @media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+    /* All Mobile Sizes (devices and browser) */
+    @media only screen and (max-width: 767px) {}
+
+    /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+    @media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+    /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+    @media only screen and (max-width: 479px) {}
+
+  </style>
+  {% endblock %}
+
+
+{% block content %}
+
+
+<div class="row">
+  <div class="col-sm-3 col-md-2">
+<div class="btn-group-vertical" data-toggle="buttons" style="text-align: center; width: 100%">
+    <h3>Filter Choices</h3>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Fantasy
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Science Fiction
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Fiction
+    </label>
+    <label class="btn btn-info"> 
+      <input type="checkbox" checked autocomplete="off"> Young Adult
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Nonfiction
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Horror
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Satire
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Mystery
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Romance
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Cookbooks
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Self-Help
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Religion &amp; Spirituality
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Poetry
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Biography
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Historical Fiction
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Guide
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Comics
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Comedy
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Fan Fiction lol
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> Manga
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> idk what
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> other genres
+    </label>
+    <label class="btn btn-info">
+      <input type="checkbox" checked autocomplete="off"> are there
+    </label>
+</div>
+</div>
+
+ 
+
+<div class="col-sm-16 col-md-10  ">
+  <div class = "container-fluid" style=" text-align: center;">
+
+  <h3> Browse Books!</h3>
+  <div id="myCarousel" class="carousel slide">
+      <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  {% for books in queryset %}
+        {% if forloop.first %}
+            <div class="item active peopleCarouselImg">
+      {% else %}
+          <div class = "item peopleCarouselImg">
+      {% endif %}
+            <img src="https://i.imgur.com/0l2uZR9.jpg" alt="Image">
+            <div class="carousel-caption">
+            <h3><a href="{% url 'profileOther' %}"> {{books.book.title}}</a></h3>
+            <p>Author: {{books.book.author}}</p>
+            <p>Owner: {{books.owner.first_name}} {{books.owner.last_name}} </p>
+            </div>      
+            </div>
+  {% endfor %}
+  
+  </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+<!--       {% if count == 0 %}
+        {{ count|add:'4' }}
+      {% else %}
+        {{ count|add:"-1"}}
+      {% endif %} -->
+      
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+<!--       {% if count == length %}
+        {{ count|add:"5" }}
+      {% else %}
+        {{ count|add:"1" }}
+      {% endif %} -->
+    </a>
+    </div>
+      </div>
+
+  </div>
+
+<!--    <div class="col-sm-8 col-md-2 btn-group-vertical" style="text-align: center"> 
+    <h3>Owner Info</h3>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Bob Bobberson</a>
+
+
+    <h4>Other Owners</h4>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Jacob James</a>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">John Jeremies</a>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Jack Jones</a>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Jeff Jefferson</a>
+    
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Jedediah Jet</a>
+
+    <a href="{% url 'profileOther' %}" class="btn btn-primary">Joseph Jameson</a>
+
+  </div> -->
+</div>
+
+{% endblock %}
