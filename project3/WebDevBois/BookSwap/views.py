@@ -14,15 +14,14 @@ def index(request):
     return render(
         request,
         'index.html',
-        # context={'queryset':queryset},
-    	context={},
+        context={'queryset':queryset},
     )
 
 def browse(request):
     Jack = Profile.objects.get(first_name="Jack")
     queryset = BookInstance.objects.filter(owner = Jack.id)
     
-    return render(request,'browse.html', context={},)#context={'queryset':queryset},)
+    return render(request,'browse.html', context={'queryset':queryset},)
 
 def profileSelf(request):
 	user = Profile.objects.get(first_name="Nate")
@@ -31,18 +30,17 @@ def profileSelf(request):
 	booksWant = user.books_wanted.all()
 	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
 	
-	# paginator = Paginator(booksOffer, 3)
-	# page = request.GET.get('page', 1)
-	# books = paginator.get_page(page)
+	paginator = Paginator(booksOffer, 3)
+	page = request.GET.get('page', 1)
+	books = paginator.get_page(page)
 	
 	
 
 	return render(
 		request,
 		'profileSelf.html',
-		# context={'user': user, 'booksWant': booksWant, 'books': books,
-		#  'recommended':recommended[0],},
-		context={},
+		context={'user': user, 'booksWant': booksWant, 'books': books,
+		 'recommended':recommended[0],},
 		)
 
 def addBook(request):
@@ -57,17 +55,16 @@ def profileOther(request):
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
 
-	# paginator = Paginator(booksOffer, 3)
-	# page = request.GET.get('page', 1)
-	# books = paginator.get_page(page)
+
+	paginator = Paginator(booksOffer, 3)
+	page = request.GET.get('page', 1)
+	books = paginator.get_page(page)
 
 	return render(
 		request,
 		'profileOther.html',
-		# context={'user':user, 'books':books, 'wishlist':wishlist},
-		context={},
+		context={'user':user, 'books':books, 'wishlist':wishlist},
 		)
-
 
 def contact(request):
 	return render(
