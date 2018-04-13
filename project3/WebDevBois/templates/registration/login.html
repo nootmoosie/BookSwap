@@ -1,5 +1,29 @@
 {% extends "base_generic.html" %}
 
+{%block style%}
+	<style>
+	
+	p
+	{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-right: 150px;
+		margin-left: 80px;
+	}
+		
+	.loginForm
+	{
+		font-family: 'Oswald'; 
+		letter-spacing: 1px;
+		
+		margin-top: 10px;
+		margin-bottom: 0px;
+		margin-right: 150px;
+		margin-left: 80px;
+	}
+	</style>
+{% endblock %}
+
 {% block content %}
 
 {% if form.errors %}
@@ -15,7 +39,7 @@
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form class = "loginForm" method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
 <div>
@@ -28,7 +52,7 @@
 </div>
 
 <div>
-  <input type="submit" value="login" />
+  <input type="submit" value="Login" />
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
