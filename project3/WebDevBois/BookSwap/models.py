@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse #Used to generate URLs by reversing the URL patterns
+from django.contrib.auth.models import User
 import uuid # Required for unique book instances
 
 
@@ -85,8 +86,8 @@ class BookInstance(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
-    owner = models.ForeignKey('User', on_delete=models.CASCADE, null=True)
-    instance_pic = models.ImageField(upload_to = 'bookinstance_imgs/', default = 'bookinstance_imgs/default_instance.jpg')
+    #owner = models.ForeignKey('User', on_delete=models.CASCADE, null=True)
+    #instance_pic = models.ImageField(upload_to = 'bookinstance_imgs/', default = 'bookinstance_imgs/default_instance.jpg')
 
 
     CONDITION = (
@@ -132,7 +133,7 @@ class Author(models.Model):
     class Meta:
         unique_together = (('first_name', 'last_name'),)
 
-class User(models.Model):
+class Profile(models.Model):
 	"""
 	Model representing each user in the system.
 	"""
@@ -152,7 +153,7 @@ class User(models.Model):
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
     
-	books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
+	#books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
 	books_wanted = models.ManyToManyField(Book) 
 
 	class Meta:
