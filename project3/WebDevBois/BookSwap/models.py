@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse #Used to generate URLs by reversing the URL patterns
 import uuid # Required for unique book instances
+from django.contrib.auth.models import User
 
 
 
@@ -59,7 +60,6 @@ class Book(models.Model):
     """
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
     for_class = models.CharField('Class', max_length=200, help_text='Enter which class this textbook is for.', default='Not for a class.')
 
@@ -85,7 +85,7 @@ class BookInstance(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
-    owner = models.ForeignKey('Profile', on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     instance_pic = models.ImageField(upload_to = 'bookinstance_imgs/', default = 'bookinstance_imgs/default_instance.jpg')
 
 
@@ -136,9 +136,7 @@ class Profile(models.Model):
 	"""
 	Model representing each user in the system.
 	"""
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular user")
-	first_name = models.CharField(max_length=200, help_text="Enter your first name.")
-	last_name = models.CharField(max_length=200, help_text="Enter your last name.")
+	user = models.OneToOneField(User, on_delete=models.CASCADE, default='None')
 	SCHOOLS = (
 		('University of Massachusetts Amherst','University of Massachusetts Amherst'),
 		('Hampshire College', 'Hampshire College'),
@@ -155,11 +153,13 @@ class Profile(models.Model):
 	books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
 	books_wanted = models.ManyToManyField(Book) 
 
-	class Meta:
-		ordering = ["last_name","first_name"]
+	# class Meta:
+	# 	ordering = ["last_name","first_name"]
 
 	def get_absolute_url(self):
-		return reverse('user-detail', args=[str(self.id)])
+		return reverse('user-detail', args=[str(self.user.username)])
     
 	def __str__(self):
-		return '{0}, {1}'.format(self.first_name,self.last_name)
+		return '{0}, {1}'.format(self.user.first_name,self.user.last_name)
+
+
