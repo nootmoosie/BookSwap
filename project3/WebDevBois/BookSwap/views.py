@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre, Profile
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -23,12 +24,14 @@ def browse(request):
     
     return render(request,'browse.html', context={'queryset':queryset},)
 
+@login_required
 def profileSelf(request):
-	user = Profile.objects.get(first_name="Nate")
-	otherUser = Profile.objects.get(first_name="Jack")
-	booksOffer = BookInstance.objects.filter(owner = user.id)
-	booksWant = user.books_wanted.all()
-	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
+	use = request.user
+	profile = Profile.objects.get(user = use.id)
+	#otherUser = Profile.objects.get(first_name="Jack")
+	booksOffer = BookInstance.objects.filter(owner = use.id)
+	booksWant = profile.books_wanted.all()
+#	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
 	
 	paginator = Paginator(booksOffer, 3)
 	page = request.GET.get('page', 1)
@@ -39,8 +42,9 @@ def profileSelf(request):
 	return render(
 		request,
 		'profileSelf.html',
-		context={'user': user, 'booksWant': booksWant, 'books': books,
-		 'recommended':recommended[0],},
+		context={'user': use, 'profile': profile, 'booksWant': booksWant, 'books': books,
+		# 'recommended':recommended[0],},
+		}
 		)
 
 def addBook(request):

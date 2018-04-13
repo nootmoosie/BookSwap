@@ -51,8 +51,8 @@
           <div class="panel panel-default text-left">
             <div class="panel-body">
               <p contenteditable="false">
-              	<strong>College/University:</strong> {{user.university}}<br>
-              	<strong>About me:</strong> {{user.bio}}<br>
+              	<strong>College/University:</strong> {{profile.university}}<br>
+              	<strong>About me:</strong> {{profile.bio}}<br>
               </p>
               <button type="button" class="btn btn-default btn-sm">
                  Edit
@@ -113,7 +113,8 @@
   <div class="col-sm-2 well">
         <div class="thumbnail">
           <p>Recommended:</p>
-          <p>Someone has <strong><em>{{recommended.book.title}}</strong></em></p>
+         <!--  <p>Someone has <strong><em>{{recommended.book.title}}</strong></em></p>  -->
+         <p>Someone has <strong><em>Placeholder</strong></em></p> 
          
           <a href="{% url 'profileOther' %}" class="btn btn-primary">Take a look</a> <!-- this needs fixing -->
         </div> 
