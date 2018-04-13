@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book, Author, BookInstance, Genre, User
+from .models import Book, Author, BookInstance, Genre, Profile
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -8,7 +8,7 @@ def index(request):
     """
     View function for home page of site.
     """
-    user = User.objects.get(first_name="Jack")
+    user = Profile.objects.get(first_name="Jack")
     queryset = BookInstance.objects.filter(owner = user.id)[1:4]
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -18,14 +18,14 @@ def index(request):
     )
 
 def browse(request):
-    Jack = User.objects.get(first_name="Jack")
+    Jack = Profile.objects.get(first_name="Jack")
     queryset = BookInstance.objects.filter(owner = Jack.id)
     
     return render(request,'browse.html', context={'queryset':queryset},)
 
 def profileSelf(request):
-	user = User.objects.get(first_name="Nate")
-	otherUser = User.objects.get(first_name="Jack")
+	user = Profile.objects.get(first_name="Nate")
+	otherUser = Profile.objects.get(first_name="Jack")
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	booksWant = user.books_wanted.all()
 	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
@@ -51,7 +51,7 @@ def addBook(request):
 		)
 
 def profileOther(request):
-	user = User.objects.get(first_name="Jack")
+	user = Profile.objects.get(first_name="Jack")
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	wishlist = user.books_wanted.all()
 
