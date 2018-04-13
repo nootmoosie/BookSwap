@@ -8,8 +8,8 @@ def index(request):
     """
     View function for home page of site.
     """
-    # user = User.objects.get(first_name="Jack")
-    # queryset = BookInstance.objects.filter(owner = user.id)[1:4]
+    user = Profile.objects.get(first_name="Jack")
+    queryset = BookInstance.objects.filter(owner = user.id)[1:4]
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
@@ -19,17 +19,17 @@ def index(request):
     )
 
 def browse(request):
-    # Jack = User.objects.get(first_name="Jack")
-    # queryset = BookInstance.objects.filter(owner = Jack.id)
+    Jack = Profile.objects.get(first_name="Jack")
+    queryset = BookInstance.objects.filter(owner = Jack.id)
     
     return render(request,'browse.html', context={},)#context={'queryset':queryset},)
 
 def profileSelf(request):
-	# user = User.objects.get(first_name="Nate")
-	# otherUser = User.objects.get(first_name="Jack")
-	# booksOffer = BookInstance.objects.filter(owner = user.id)
-	# booksWant = user.books_wanted.all()
-	# recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
+	user = Profile.objects.get(first_name="Nate")
+	otherUser = Profile.objects.get(first_name="Jack")
+	booksOffer = BookInstance.objects.filter(owner = user.id)
+	booksWant = user.books_wanted.all()
+	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
 	
 	# paginator = Paginator(booksOffer, 3)
 	# page = request.GET.get('page', 1)
@@ -53,10 +53,9 @@ def addBook(request):
 		)
 
 def profileOther(request):
-	# user = User.objects.get(first_name="Jack")
-	# booksOffer = BookInstance.objects.filter(owner = user.id)
-	# wishlist = user.books_wanted.all()
-
+	user = Profile.objects.get(first_name="Jack")
+	booksOffer = BookInstance.objects.filter(owner = user.id)
+	wishlist = user.books_wanted.all()
 
 	# paginator = Paginator(booksOffer, 3)
 	# page = request.GET.get('page', 1)
