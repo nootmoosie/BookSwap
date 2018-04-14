@@ -127,7 +127,7 @@ class Author(models.Model):
         """
         String for representing the Model object.
         """
-        return '{0}, {1}'.format(self.last_name,self.first_name)
+        return str(self.first_name + " " + self.last_name)
 
     class Meta:
         unique_together = (('first_name', 'last_name'),)

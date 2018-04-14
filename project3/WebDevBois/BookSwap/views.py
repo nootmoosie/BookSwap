@@ -3,6 +3,7 @@ from .models import Book, Author, BookInstance, Genre, Profile
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -28,12 +29,12 @@ def browse(request):
 def profileSelf(request):
 	use = request.user
 	profile = Profile.objects.get(user = use.id)
-	#otherUser = Profile.objects.get(first_name="Jack")
+	otherUser = User.objects.exclude(id = use.id).exclude(username="compsci326")[0]
 	booksOffer = BookInstance.objects.filter(owner = use.id)
 	booksWant = profile.books_wanted.all()
-#	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
+	recommended = BookInstance.objects.filter(owner = otherUser.id) #This needs fixing
 	
-	paginator = Paginator(booksOffer, 3)
+	paginator = Paginator(booksOffer, 5)
 	page = request.GET.get('page', 1)
 	books = paginator.get_page(page)
 	
@@ -43,8 +44,26 @@ def profileSelf(request):
 		request,
 		'profileSelf.html',
 		context={'user': use, 'profile': profile, 'booksWant': booksWant, 'books': books,
-		# 'recommended':recommended[0],},
-		}
+		'recommended':recommended[0], 'otherUser': otherUser,},
+		
+		)
+
+def profileOther(request, pk):
+	user = User.objects.get(id = pk)
+	#user = request.user
+	profile = Profile.objects.get(user = user.id)
+	booksOffer = BookInstance.objects.filter(owner = user.id)
+	wishlist = profile.books_wanted.all()
+
+
+	paginator = Paginator(booksOffer, 5)
+	page = request.GET.get('page', 1)
+	books = paginator.get_page(page)
+
+	return render(
+		request,
+		'profileOther.html',
+		context={'user':user, 'profile': profile, 'books':books, 'wishlist':wishlist},
 		)
 
 def addBook(request):
@@ -54,21 +73,7 @@ def addBook(request):
 		context={},
 		)
 
-def profileOther(request):
-	user = Profile.objects.get(first_name="Jack")
-	booksOffer = BookInstance.objects.filter(owner = user.id)
-	wishlist = user.books_wanted.all()
 
-
-	paginator = Paginator(booksOffer, 3)
-	page = request.GET.get('page', 1)
-	books = paginator.get_page(page)
-
-	return render(
-		request,
-		'profileOther.html',
-		context={'user':user, 'books':books, 'wishlist':wishlist},
-		)
 
 def contact(request):
 	return render(

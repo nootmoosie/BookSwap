@@ -34,7 +34,7 @@
         	<ul>
        		{% for book in booksWant %}
         	
-          		<li>{{book.title}}</li>
+          		<li>{{book.title}} - {{book.author}}</li>
                 
         	{% endfor %}
     		</ul>
@@ -113,10 +113,10 @@
   <div class="col-sm-2 well">
         <div class="thumbnail">
           <p>Recommended:</p>
-         <!--  <p>Someone has <strong><em>{{recommended.book.title}}</strong></em></p>  -->
-         <p>Someone has <strong><em>Placeholder</strong></em></p> 
+          <p>Someone has <strong><em>{{recommended.book.title}}</strong></em></p> 
+         <!-- <p>Someone has <strong><em>Placeholder</strong></em></p>  -->
          
-          <a href="{% url 'profileOther' %}" class="btn btn-primary">Take a look</a> <!-- this needs fixing -->
+          <a href="{% url 'profileOther' otherUser.id %}" class="btn btn-primary">Take a look</a> <!-- this needs fixing -->
         </div> 
         <div class="thumbnail">
           {% load static %}
