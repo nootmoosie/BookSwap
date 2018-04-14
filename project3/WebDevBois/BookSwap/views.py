@@ -10,7 +10,7 @@ def index(request):
     """
     View function for home page of site.
     """
-    user = Profile.objects.get(first_name="Jack")
+    user = User.objects.get(first_name="Jack")
     queryset = BookInstance.objects.filter(owner = user.id)[1:4]
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -19,11 +19,19 @@ def index(request):
         context={'queryset':queryset},
     )
 
+@login_required
 def browse(request):
-    Jack = Profile.objects.get(first_name="Jack")
-    queryset = BookInstance.objects.filter(owner = Jack.id)
-    
-    return render(request,'browse.html', context={'queryset':queryset},)
+	user = request.user
+	admin = User.objects.get(username = "compsci326")
+	queryset = BookInstance.objects.exclude(owner = user.id).exclude(owner = admin.id)
+	otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
+	
+
+	return render(
+		request,
+		'browse.html',
+		context={'queryset' : queryset, 'user' : user, 'otherUser' : otherUser,},
+		)
 
 @login_required
 def profileSelf(request):
