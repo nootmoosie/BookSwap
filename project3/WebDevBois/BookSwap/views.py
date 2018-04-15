@@ -89,3 +89,49 @@ def contact(request):
 		'contact.html',
 		context={},
 		)
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from .forms import AddBookForm
+
+@login_required
+def add_book(request, pk):
+    """
+    View function for renewing a specific BookInstance by librarian
+    """
+    use = request.user
+    profile = Profile.objects.get(user = use.id)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = AddBookForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            title_data = self.cleaned_data['title']
+            author_first_data = self.cleaned_data['author_first']
+            author_last_data = self.cleaned_data['author_last']
+            condition_data = self.cleaned_data['condition']
+            comments_data = self.cleaned_data['comments']
+
+            author_new = Author(first_name = author_first_data, last_name = author_last_data)
+            genre_new = Genre()
+            book_new = Book(title = title_data, author = author_new, genre = genre_new)
+            book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
+            
+            profile.books_offered = profile.books_offered.objects.create(book_instance_new)
+            profile.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('profileSelf') )
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = AddBookForm(initial={})
+
+    return render(request, 'addBook.html', {'form': form})
