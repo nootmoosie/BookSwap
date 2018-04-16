@@ -125,8 +125,9 @@ def add_book(request):
             # book_new.genre.add(genre_new)
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
             
-            # profile.books_offered.add(book_instance_new)
-            profile.save()
+            # profile.books_offered.objects.add(book_instance_new)
+            # profile.save()
+            # book_instance_new.
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('profileSelf') )
