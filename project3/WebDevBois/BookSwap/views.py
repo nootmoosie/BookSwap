@@ -97,7 +97,7 @@ from django.urls import reverse
 from .forms import AddBookForm
 
 @login_required
-def add_book(request, pk):
+def add_book(request):
     """
     View function for renewing a specific BookInstance by librarian
     """
