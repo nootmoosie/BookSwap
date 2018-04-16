@@ -120,10 +120,13 @@ def add_book(request):
             comments_data = form.cleaned_data['comments']
 
             author_new = Author(first_name = author_first_data, last_name = author_last_data)
-            genre_new = Genre()
+            author_new.save()
+            # genre_new = Genre()
             book_new = Book(title = title_data, author = author_new)
+            book_new.save()
             # book_new.genre.add(genre_new)
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
+            book_instance_new.save()
             
             # profile.books_offered.objects.add(book_instance_new)
             # profile.save()
