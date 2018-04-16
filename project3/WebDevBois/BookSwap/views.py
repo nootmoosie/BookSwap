@@ -10,13 +10,16 @@ def index(request):
     """
     View function for home page of site.
     """
-    user = User.objects.get(first_name="Jack")
-    queryset = BookInstance.objects.filter(owner = user.id)[1:4]
+    user = request.user
+    otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
+    recommended = BookInstance.objects.filter(owner = otherUser.id)
+    queryset = BookInstance.objects.filter(owner = otherUser.id)[1:4]
+
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'index.html',
-        context={'queryset':queryset},
+        context={'queryset':queryset, 'otherUser': otherUser},
     )
 
 @login_required
