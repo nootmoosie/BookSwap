@@ -29,6 +29,7 @@ class AddBookForm(forms.Form):
     condition = forms.ChoiceField(choices = CONDITION_CHOICES, label="Conditon", initial='', widget=forms.Select(), required=True)
     genre = forms.ModelChoiceField(queryset = Genre.objects.all())
     comments = forms.CharField(label = "Comments (Optional)", required = False)
+    for_class = forms.CharField(label = "College Class? (If no leave blank)", required = False)
 
 
     def clean_title(self):

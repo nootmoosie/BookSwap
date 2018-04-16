@@ -119,20 +119,29 @@ def add_book(request):
             condition_data = form.cleaned_data['condition']
             genre_data = form.cleaned_data['genre']
             comments_data = form.cleaned_data['comments']
+            for_class_data = form.cleaned_data['for_class']
 
             author_new = Author(first_name = author_first_data, last_name = author_last_data)
+
+            auth_filter = Author.objects.all().filter(first_name = author_first_data).filter(last_name = author_last_data)
+
+            if(len(auth_filter) > 0):
+            	author_new = auth_filter[0]
+
             author_new.save()
-            # genre_new = Genre()
-            book_new = Book(title = title_data, author = author_new)
+            book_new = Book(title = title_data, author = author_new, for_class = for_class_data)
+
+            book_filter = Book.objects.all().filter(genre = genre_data).filter(author = author_new).filter(for_class = for_class_data)
+
+            if(len(book_filter) > 0):
+            	book_new = book_filter[0]
+
             # book_new.genre.objects.add(genre_data)
             book_new.save()
             # book_new.genre.add(genre_new)
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
             book_instance_new.save()
             
-            # profile.books_offered.add(book_instance_new)
-            # profile.save()
-            # book_instance_new.
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('profileSelf') )
