@@ -19,11 +19,15 @@ class AddBookForm(forms.Form):
     #     (5, _("Great"))
     #     )
 
+    #Author
+    #Book - Genre, ForClass
+    #BookInst - Picture
+
     title = forms.CharField(label = "Title", min_length = 1, required = True)
     author_first = forms.CharField(label = "Author's First Name", min_length = 1, required = True)
     author_last = forms.CharField(label = "Author's Last Name", min_length = 1, required = True)
     condition = forms.ChoiceField(choices = CONDITION_CHOICES, label="Conditon", initial='', widget=forms.Select(), required=True)
-    # genre = forms.ChoiceField(choices = GENRE_CHOICES, label="Genre", initial='', widget=forms.Select(), required=True)
+    genre = forms.ModelChoiceField(queryset = Genre.objects.all())
     comments = forms.CharField(label = "Comments (Optional)", required = False)
 
 
@@ -50,6 +54,10 @@ class AddBookForm(forms.Form):
 
     def clean_condition(self):
         data = self.cleaned_data['condition']
+        return data
+
+    def clean_genre(self):
+        data = self.cleaned_data['genre']
         return data
 
     def clean_comments(self):

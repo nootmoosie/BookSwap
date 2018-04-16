@@ -117,18 +117,20 @@ def add_book(request):
             author_first_data = form.cleaned_data['author_first']
             author_last_data = form.cleaned_data['author_last']
             condition_data = form.cleaned_data['condition']
+            genre_data = form.cleaned_data['genre']
             comments_data = form.cleaned_data['comments']
 
             author_new = Author(first_name = author_first_data, last_name = author_last_data)
             author_new.save()
             # genre_new = Genre()
             book_new = Book(title = title_data, author = author_new)
+            # book_new.genre.objects.add(genre_data)
             book_new.save()
             # book_new.genre.add(genre_new)
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
             book_instance_new.save()
             
-            # profile.books_offered.objects.add(book_instance_new)
+            # profile.books_offered.add(book_instance_new)
             # profile.save()
             # book_instance_new.
 

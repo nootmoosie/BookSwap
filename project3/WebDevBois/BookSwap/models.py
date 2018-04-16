@@ -58,6 +58,8 @@ class Book(models.Model):
     """
     Model representing a book (but not a specific copy of a book).
     """
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this book")
+
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
@@ -150,7 +152,7 @@ class Profile(models.Model):
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
     
-	# books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
+	books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
 	books_wanted = models.ManyToManyField(Book) 
 
 	# class Meta:
