@@ -19,65 +19,18 @@
   	{% endblock %}
 
 	{% block content %}
-		<div class="row">
-			<div class="col-md-4" id="addBookLogo">
-				{% load static %}
-				<img src="{% static 'images/addBook.png' %}" alt="Add Book" width="350px" id="addBookImage">
-				<!-- <input type="image" src="./images/addBook.png" width="350px"/> -->
-				<input type="file" name="fileupload" value="fileupload" id="fileupload" accept=" image/jpeg, image/png" onchange="readURL(this);">
-				<!-- <input type="file" id="book_upload" style="display: none;" /> -->
-				<!-- <p>Add Picture</p> -->
-			</div>
-			<div class="col-md-8">
 
-				<div class="row">
-					<div class="col-md-12" id="BookForm">
-						<form>
-							  Title:<br>
-							  <input type="text" name="Title" placeholder="ex. Moby Dick" class="TextIn"><br>
-							  Author:<br>
-							  <input type="text" name="Author" placeholder="ex. Herman Melville" class="TextIn">
-						</form>
-						<form action="">
-							Condition:<br>
-							<input type="radio" name="condititon" value="1"> 1
-							<input type="radio" name="condititon" value="2"> 2
-							<input type="radio" name="condititon" value="3"> 3
-							<input type="radio" name="condititon" value="4"> 4
-							<input type="radio" name="condititon" value="5"> 5
-						</form>
-<!-- 						<form action="">
-							Rating:<br>
-							<input type="radio" name="rating" value="1"> 1
-							<input type="radio" name="rating" value="2"> 2
-							<input type="radio" name="rating" value="3"> 3
-							<input type="radio" name="rating" value="4"> 4
-							<input type="radio" name="rating" value="5"> 5
-						</form> -->
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-
-		<div class="row">
-			<div class="col-md-12" id="comments">
-				Comments (Optional):<br>
-				<textarea rows="4" placeholder="ex. Slight Water Damage"></textarea>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12" id="submitBtnWrap">
-				<a href="{% url 'profileSelf' %}" id="submitBtn">Submit</a>
-			</div>
-		</div>
+	    <form action="" method="post">
+	        {% csrf_token %}
+	        <table>
+	        	{{ form }}
+	        </table>
+	        <input type="submit" value="Submit" />
+	    </form>
 
 		<div class="row">
 			<div class="col-md-12" id="cancelBtnWrap">
-				<a href="{% url 'profileSelf' %}" id="submitBtn">Cancel</a>
+				<a href="{% url 'profileSelf' %}" id="cancelBtn">Cancel</a>
 			</div>
 		</div>
 	{% endblock %}

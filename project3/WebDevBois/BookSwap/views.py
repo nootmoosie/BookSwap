@@ -113,18 +113,19 @@ def add_book(request):
         # Check if the form is valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            title_data = self.cleaned_data['title']
-            author_first_data = self.cleaned_data['author_first']
-            author_last_data = self.cleaned_data['author_last']
-            condition_data = self.cleaned_data['condition']
-            comments_data = self.cleaned_data['comments']
+            title_data = form.cleaned_data['title']
+            author_first_data = form.cleaned_data['author_first']
+            author_last_data = form.cleaned_data['author_last']
+            condition_data = form.cleaned_data['condition']
+            comments_data = form.cleaned_data['comments']
 
             author_new = Author(first_name = author_first_data, last_name = author_last_data)
             genre_new = Genre()
-            book_new = Book(title = title_data, author = author_new, genre = genre_new)
+            book_new = Book(title = title_data, author = author_new)
+            # book_new.genre.add(genre_new)
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
             
-            profile.books_offered = profile.books_offered.objects.create(book_instance_new)
+            # profile.books_offered.add(book_instance_new)
             profile.save()
 
             # redirect to a new URL:
