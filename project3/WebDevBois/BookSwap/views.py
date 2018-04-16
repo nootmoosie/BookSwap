@@ -5,21 +5,26 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from random import randint
 
 def index(request):
     """
     View function for home page of site.
     """
     user = request.user
-    otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
-    recommended = BookInstance.objects.filter(owner = otherUser.id)
-    queryset = BookInstance.objects.filter(owner = otherUser.id)[1:4]
+    #otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
+    otherUsers = User.objects.exclude(id = user.id).exclude(username="compsci326")
+    numUsers = otherUsers.count()
+    rand = randint(0,numUsers-1)
+    randUser = otherUsers[rand]
+    recommended = BookInstance.objects.filter(owner = randUser.id)
+    queryset = BookInstance.objects.filter(owner = randUser.id)[1:4]
 
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'index.html',
-        context={'queryset':queryset, 'otherUser': otherUser},
+        context={'queryset':queryset, 'otherUser': randUser},
     )
 
 @login_required
