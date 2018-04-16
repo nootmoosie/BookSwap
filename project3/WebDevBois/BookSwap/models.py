@@ -152,7 +152,7 @@ class Profile(models.Model):
 	bio = models.CharField(max_length=200, help_text="Enter a short bio.")
 
     
-	books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
+	# books_offered = models.ForeignKey('BookInstance', on_delete=models.CASCADE, null=True)
 	books_wanted = models.ManyToManyField(Book) 
 
 	# class Meta:
