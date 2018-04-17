@@ -24,18 +24,20 @@ def index(request):
 		context={'queryset':queryset,},
 	)
 
-@login_required
 def browse(request):
-	user = request.user
-	admin = User.objects.get(username = "compsci326")
-	queryset = BookInstance.objects.exclude(owner = user.id).exclude(owner = admin.id)
-	otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
-	
+
+	if(request.user.is_authenticated):
+		user = request.user
+		admin = User.objects.get(username = "compsci326")
+		queryset = BookInstance.objects.exclude(owner = user.id).exclude(owner = admin.id)
+	else:
+		admin = User.objects.get(username = "compsci326")
+		queryset = BookInstance.objects.exclude(owner = admin.id)
 
 	return render(
 		request,
 		'browse.html',
-		context={'queryset' : queryset, 'user' : user, 'otherUser' : otherUser,},
+		context={'queryset' : queryset,},
 		)
 
 @login_required
