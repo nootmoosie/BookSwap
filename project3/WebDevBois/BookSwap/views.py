@@ -196,7 +196,7 @@ def add_Wishlist(request):
             author_new.save()
             book_new = Book(title = title_data, author = author_new, for_class = for_class_data)
 
-            book_filter = Book.objects.all().filter(genre = genre_data).filter(author = author_new).filter(for_class = for_class_data)
+            book_filter = Book.objects.all().filter(title = title_data)
 
             if(len(book_filter) > 0):
             	book_new = book_filter[0]
