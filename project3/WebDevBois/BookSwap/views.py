@@ -18,7 +18,7 @@ def index(request):
     rand = randint(0,numUsers-1)
     randUser = otherUsers[rand]
     recommended = BookInstance.objects.filter(owner = randUser.id)
-    queryset = BookInstance.objects.filter(owner = randUser.id)[1:4]
+    queryset = BookInstance.objects.filter(owner = randUser.id)[0:4]
 
     # Render the HTML template index.html with the data in the context variable
     return render(
