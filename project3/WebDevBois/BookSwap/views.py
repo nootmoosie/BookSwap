@@ -104,6 +104,7 @@ from django.urls import reverse
 
 from .forms import AddBookForm
 from .forms import AddWishlistForm
+from .forms import EditBioForm
 
 @login_required
 def add_book(request):
@@ -213,3 +214,32 @@ def add_Wishlist(request):
         form = AddWishlistForm(initial={})
 
     return render(request, 'addWishlist.html', {'form': form})
+
+@login_required
+def edit_bio(request):
+    use = request.user
+    profile = Profile.objects.get(user = use.id)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = EditBioForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            profile.university = form.cleaned_data['college']
+            profile.bio = form.cleaned_data['bio']
+            profile.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('profileSelf') )
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = EditBioForm(initial={})
+        form.fields['college'].initial = profile.university
+        form.fields['bio'].initial = profile.bio
+
+    return render(request, 'editBio.html', {'form': form})

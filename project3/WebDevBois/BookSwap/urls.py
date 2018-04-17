@@ -9,4 +9,5 @@ urlpatterns = [
     path('profiles/<int:pk>', views.profileOther, name='profileOther'), 
     path('profile', views.profileSelf, name='profileSelf'),
     path('contact', views.contact, name='contact'),
+	path('profile/editBio', views.edit_bio, name='editBio'),
 ]

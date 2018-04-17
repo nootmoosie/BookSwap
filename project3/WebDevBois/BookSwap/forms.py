@@ -92,3 +92,19 @@ class AddWishlistForm(forms.Form):
     def clean_genre(self):
         data = self.cleaned_data['genre']
         return data
+
+class EditBioForm(forms.Form):
+
+    COLLEGE_CHOICES = Profile.SCHOOLS
+
+    college = forms.ChoiceField(choices = COLLEGE_CHOICES, label="College/University", widget=forms.Select(), required=True)
+    bio = forms.CharField(label = "Bio", min_length = 1, widget=forms.Textarea, required = True)
+
+
+    def clean_college(self):
+        data = self.cleaned_data['college']
+        return data
+
+    def clean_bio(self):
+        data = self.cleaned_data['bio']
+        return data

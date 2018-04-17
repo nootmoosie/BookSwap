@@ -54,9 +54,7 @@
               	<strong>College/University:</strong> {{profile.university}}<br>
               	<strong>About me:</strong> {{profile.bio}}<br>
               </p>
-              <button type="button" class="btn btn-default btn-sm">
-                 Edit
-              </button>     
+              <a href="{% url 'editBio' %}" class="btn btn-primary">Edit</a>      
             </div>
           </div>
         </div>
