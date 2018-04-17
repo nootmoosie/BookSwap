@@ -34,15 +34,6 @@ class AddBookForm(forms.Form):
 
     def clean_title(self):
         data = self.cleaned_data['title']
-        #Check date is not in past. 
-        # if data < datetime.date.today():
-        #     raise ValidationError(_('Invalid date - renewal in past'))
-
-        # #Check date is in range librarian allowed to change (+4 weeks).
-        # if data > datetime.date.today() + datetime.timedelta(weeks=4):
-        #     raise ValidationError(_('Invalid date - renewal more than 4 weeks ahead'))
-
-        # Remember to always return the cleaned data.
         return data
 
     def clean_author_first(self):
@@ -63,6 +54,10 @@ class AddBookForm(forms.Form):
 
     def clean_comments(self):
         data = self.cleaned_data['comments']
+        return data
+
+    def clean_for_class(self):
+        data = self.cleaned_data['for_class']
         return data
 
 
