@@ -64,3 +64,47 @@ class AddBookForm(forms.Form):
     def clean_comments(self):
         data = self.cleaned_data['comments']
         return data
+
+
+class AddWishlistForm(forms.Form):
+
+
+    title = forms.CharField(label = "Title", min_length = 1, required = True)
+    author_first = forms.CharField(label = "Author's First Name", min_length = 1, required = True)
+    author_last = forms.CharField(label = "Author's Last Name", min_length = 1, required = True)
+    genre = forms.ModelChoiceField(queryset = Genre.objects.all())
+    for_class = forms.CharField(label = "College Class? (If no leave blank)", required = False)
+
+
+    def clean_title(self):
+        data = self.cleaned_data['title']
+
+        return data
+
+    def clean_author_first(self):
+        data = self.cleaned_data['author_first']
+        return data
+
+    def clean_author_last(self):
+        data = self.cleaned_data['author_last']
+        return data
+
+    def clean_genre(self):
+        data = self.cleaned_data['genre']
+        return data
+
+class EditBioForm(forms.Form):
+
+    COLLEGE_CHOICES = Profile.SCHOOLS
+
+    college = forms.ChoiceField(choices = COLLEGE_CHOICES, label="College/University", widget=forms.Select(), required=True)
+    bio = forms.CharField(label = "Bio", min_length = 1, widget=forms.Textarea, required = True)
+
+
+    def clean_college(self):
+        data = self.cleaned_data['college']
+        return data
+
+    def clean_bio(self):
+        data = self.cleaned_data['bio']
+        return data

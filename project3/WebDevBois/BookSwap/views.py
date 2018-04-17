@@ -18,7 +18,7 @@ def index(request):
     rand = randint(0,numUsers-1)
     randUser = otherUsers[rand]
     recommended = BookInstance.objects.filter(owner = randUser.id)
-    queryset = BookInstance.objects.filter(owner = randUser.id)[1:4]
+    queryset = BookInstance.objects.filter(owner = randUser.id)[0:4]
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -103,6 +103,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .forms import AddBookForm
+from .forms import AddWishlistForm
+from .forms import EditBioForm
 
 @login_required
 def add_book(request):
@@ -121,6 +123,7 @@ def add_book(request):
         # Check if the form is valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            book_data = form.cleaned_data['book']
             title_data = form.cleaned_data['title']
             author_first_data = form.cleaned_data['author_first']
             author_last_data = form.cleaned_data['author_last']
@@ -160,3 +163,83 @@ def add_book(request):
         form = AddBookForm(initial={})
 
     return render(request, 'addBook.html', {'form': form})
+
+@login_required
+def add_Wishlist(request):
+    """
+    View function for adding to wishlist
+    """
+    use = request.user
+    profile = Profile.objects.get(user = use.id)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = AddWishlistForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            title_data = form.cleaned_data['title']
+            author_first_data = form.cleaned_data['author_first']
+            author_last_data = form.cleaned_data['author_last']
+            genre_data = form.cleaned_data['genre']
+            for_class_data = form.cleaned_data['for_class']
+
+            author_new = Author(first_name = author_first_data, last_name = author_last_data)
+
+            auth_filter = Author.objects.all().filter(first_name = author_first_data).filter(last_name = author_last_data)
+
+            if(len(auth_filter) > 0):
+            	author_new = auth_filter[0]
+
+            author_new.save()
+            book_new = Book(title = title_data, author = author_new, for_class = for_class_data)
+
+            book_filter = Book.objects.all().filter(genre = genre_data).filter(author = author_new).filter(for_class = for_class_data)
+
+            if(len(book_filter) > 0):
+            	book_new = book_filter[0]
+
+            # book_new.genre.objects.add(genre_data)
+            book_new.save()
+            profile.books_wanted.add(book_new)
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('profileSelf') )
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = AddWishlistForm(initial={})
+
+    return render(request, 'addWishlist.html', {'form': form})
+
+@login_required
+def edit_bio(request):
+    use = request.user
+    profile = Profile.objects.get(user = use.id)
+
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+
+        # Create a form instance and populate it with data from the request (binding):
+        form = EditBioForm(request.POST)
+
+        # Check if the form is valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            profile.university = form.cleaned_data['college']
+            profile.bio = form.cleaned_data['bio']
+            profile.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('profileSelf') )
+
+    # If this is a GET (or any other method) create the default form.
+    else:
+        form = EditBioForm(initial={})
+        form.fields['college'].initial = profile.university
+        form.fields['bio'].initial = profile.bio
+
+    return render(request, 'editBio.html', {'form': form})

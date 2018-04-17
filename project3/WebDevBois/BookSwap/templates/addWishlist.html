@@ -2,7 +2,7 @@
 	
 	{% block style %}
 		<style>
-			.addBookForm
+			.addWishList
 			{
 				font-family: 'Oswald'; 
 				letter-spacing: 1px;
@@ -30,20 +30,6 @@
                 padding-bottom: .5em;
 			}
 			
-			.left 
-			{
-				width: 28%;
-				float: left;
-				text-align: left;
-			}
-			
-			.right
-			{
-				width: 70%;
-				margin-left: 10px;
-				float:left;
-			}
-			
 			body{
 				font-family: 'Spectral SC';
 				background-color: #633974;  
@@ -57,12 +43,12 @@
 	{% endblock %}
 
 	{% block title %}
-    	<title>BookSwap | Add Book</title>
+    	<title>BookSwap | Add Books To Your Wishlist!</title>
   	{% endblock %}
 
 	{% block content %}
 
-	    <form class=addBookForm action="" method="post">
+	    <form class=addWishList action="" method="post">
 	        {% csrf_token %}
 	        <table>
 	        	<tr>
@@ -78,10 +64,6 @@
 					<td> {{ form.author_last }}</td>
 				</tr>
 				<tr>
-					<td> <label> Condition: </label> </td>
-					<td> {{ form.condition }}</td>
-				</tr>
-				<tr>
 					<td> <label> Genre: </label> </td>
 					<td> {{ form.genre }}</td>
 				</tr>
@@ -90,16 +72,6 @@
 					<td> {{ form.for_class }}</td>
 				</tr>
 	        </table>
-			
-			<div>
-			<div class ="left">
-				<label> Comments (Optional): </label>
-			</div>				
-			<div class="right">
-				{{ form.comments }}
-			</div>
-			</div>
-			
 	        <input class=submit type="submit" value="Submit" />
 	    </form>
 
@@ -109,5 +81,3 @@
 			</div>
 		</div>
 	{% endblock %}
-
-
