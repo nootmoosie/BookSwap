@@ -21,6 +21,11 @@
 		margin-right: 150px;
 		margin-left: 80px;
 	}
+	
+	label, .submit
+	{
+		font-family: 'Spectral SC';
+	}
 	</style>
 {% endblock %}
 
@@ -43,16 +48,14 @@
 {% csrf_token %}
 
 <div>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
+  <label> Username: </label> {{ form.username }}
 </div>
 <div>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
+  <label> Password: </label> {{ form.password }} 
 </div>
 
 <div>
-  <input type="submit" value="Login" />
+  <input class=submit type="submit" value="Login" />
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
