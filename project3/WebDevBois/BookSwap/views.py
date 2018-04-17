@@ -8,24 +8,21 @@ from django.contrib.auth.models import User
 from random import randint
 
 def index(request):
-    """
-    View function for home page of site.
-    """
-    user = request.user
-    #otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
-    otherUsers = User.objects.exclude(id = user.id).exclude(username="compsci326")
-    numUsers = otherUsers.count()
-    rand = randint(0,numUsers-1)
-    randUser = otherUsers[rand]
-    recommended = BookInstance.objects.filter(owner = randUser.id)
-    queryset = BookInstance.objects.filter(owner = randUser.id)[0:4]
-
-    # Render the HTML template index.html with the data in the context variable
-    return render(
-        request,
-        'index.html',
-        context={'queryset':queryset, 'otherUser': randUser},
-    )
+	"""
+	View function for home page of site.
+	"""
+	if(request.user.is_authenticated):
+		user = request.user
+		queryset = BookInstance.objects.exclude(owner = user.id)[0:4]
+	else:
+		queryset = BookInstance.objects.all()[0:4]
+	#otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
+	# Render the HTML template index.html with the data in the context variable
+	return render(
+		request,
+		'index.html',
+		context={'queryset':queryset,},
+	)
 
 @login_required
 def browse(request):
