@@ -13,9 +13,9 @@ def index(request):
 	"""
 	if(request.user.is_authenticated):
 		user = request.user
-		queryset = BookInstance.objects.exclude(owner = user.id)[0:4]
+		queryset = BookInstance.objects.exclude(owner = user.id)[0:3]
 	else:
-		queryset = BookInstance.objects.all()[0:4]
+		queryset = BookInstance.objects.all()[0:3]
 	#otherUser = User.objects.exclude(id = user.id).exclude(username="compsci326")[0]
 	# Render the HTML template index.html with the data in the context variable
 	return render(
@@ -76,7 +76,7 @@ def profileOther(request, pk):
 	return render(
 		request,
 		'profileOther.html',
-		context={'user':user, 'profile': profile, 'books':books, 'wishlist':wishlist},
+		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist},
 		)
 
 def addBook(request):

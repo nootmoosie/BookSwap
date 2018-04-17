@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
   {% block title %}
-    <title>BookSwap | Bob's Profile</title>
+    <title>BookSwap | {{user2.first_name}}'s Profile</title>
   {% endblock %}
  
   {% block style %}
@@ -23,14 +23,14 @@
     <div class="row">
       <div class="col-sm-3 well">
         <div class="well">
-          <p>{{user.first_name}} {{user.last_name}}</p>
+          <p>{{user2.first_name}} {{user2.last_name}}</p>
           <!-- <img src="images/ProPic.jpg" class="img-circle" height="95" width="95" alt="Avatar"> -->
           <p><a href="#">Send Message</a></p>
         </div>
         
         <div class="alert alert-success fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          <p><strong>Books on {{user.first_name}}'s wishlist:</strong></p>
+          <p><strong>Books on {{user2.first_name}}'s wishlist:</strong></p>
         </div>
         {% for book in wishlist %}
         <li>{{book.title}} -</li>
@@ -71,9 +71,9 @@
                <!--   <Strong>My Rating:</Strong> 5/5<br> -->
                  <Strong>Comments:</Strong> {{bookInst.comment}}
               </p>
-            <button type="button" class="btn btn-default btn-sm">
+            <!-- <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
-            </button>
+            </button> -->
             </div>   
           </div>
         </div>
