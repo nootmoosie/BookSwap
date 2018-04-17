@@ -122,7 +122,7 @@ def add_book(request):
         # Check if the form is valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            book_data = form.cleaned_data['book']
+            # book_data = form.cleaned_data['book']
             title_data = form.cleaned_data['title']
             author_first_data = form.cleaned_data['author_first']
             author_last_data = form.cleaned_data['author_last']
