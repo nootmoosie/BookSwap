@@ -1,0 +1,92 @@
+{% extends "base_generic.html" %}
+	
+	{% block style %}
+		<style>
+		    .editBioForm
+			{
+				font-family: 'Oswald'; 
+				letter-spacing: 1px;
+				
+				margin-top: 10px;
+				margin-bottom: 0px;
+				margin-right: 150px;
+				margin-left: 80px;
+			}
+			
+			.submit
+			{
+				font-family: 'Spectral SC';
+			}
+			
+			label{
+				font-family: 'Spectral SC';
+				background-color: #633974;  
+				margin-right: 10px;
+			}
+			
+			td
+			{
+				padding-top: 1.2em;
+                padding-bottom: 1.2em;
+			}
+			
+			.left 
+			{
+				width: 16%;
+				float: left;
+				text-align: left;
+			}
+			
+			.right
+			{
+				width: 80%;
+				margin-left: 10px;
+				float:left;
+			}
+			
+			footer {
+		      background-color: #555;
+		      color: white;
+		      padding: 15px;
+		    }
+		</style>
+	{% endblock %}
+
+	{% block title %}
+    	<title>BookSwap | Edit Bio</title>
+  	{% endblock %}
+
+	{% block content %}
+
+	    <form class=editBioForm action="" method="post">
+	        {% csrf_token %}
+			<!--
+	        <table>
+	        	{{ form }}
+	        </table> -->
+			
+			<table>
+				<tr>
+					<td><label> College/University: </label><td>
+					<td> {{ form.college }} </td>
+				</tr>
+			</table>
+			
+			<div>
+			<div class ="left">
+				<label> Bio: </label>
+			</div>				
+			<div class="right">
+				{{ form.bio }}
+			</div>
+			</div>
+			
+	        <input class=submit type="submit" value="Save Changes" />
+	    </form>
+
+		<div class="row">
+			<div class="col-md-12" id="cancelBtnWrap">
+				<a href="{% url 'profileSelf' %}" id="cancelBtn">Cancel</a>
+			</div>
+		</div>
+	{% endblock %}
