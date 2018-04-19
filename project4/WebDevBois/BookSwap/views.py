@@ -1,11 +1,20 @@
 from django.shortcuts import render
-from .models import Book, Author, BookInstance, Genre, Profile
+from .models import Book, Author, BookInstance, Genre, Profile, Message
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from random import randint
+
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from .forms import AddBookForm
+from .forms import AddWishlistForm
+from .forms import MessageForm
+from .forms import EditBioForm
 
 def index(request):
 	"""
@@ -69,16 +78,29 @@ def profileOther(request, pk):
 	profile = Profile.objects.get(user = user.id)
 	booksOffer = BookInstance.objects.filter(owner = user.id)
 	wishlist = profile.books_wanted.all()
+	request_user = request.user #aka the person looking at the page
 
 
 	paginator = Paginator(booksOffer, 5)
 	page = request.GET.get('page', 1)
 	books = paginator.get_page(page)
 
+	if request.method == 'POST':
+		form = MessageForm(request.POST)
+
+		if form.is_valid():
+			msg_data = form.cleaned_data['msg']
+			msg_new = Message(text = msg_data, message_from = request_user, message_to = user)
+			msg_new.save()
+			return HttpResponseRedirect('{0}'.format(pk))
+	else:
+		form = MessageForm(initial={})
+
+
 	return render(
 		request,
 		'profileOther.html',
-		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist},
+		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist, 'form': form},
 		)
 
 def addBook(request):
@@ -96,14 +118,6 @@ def contact(request):
 		'contact.html',
 		context={},
 		)
-
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-from .forms import AddBookForm
-from .forms import AddWishlistForm
-from .forms import EditBioForm
 
 @login_required
 def add_book(request):

@@ -103,3 +103,11 @@ class EditBioForm(forms.Form):
     def clean_bio(self):
         data = self.cleaned_data['bio']
         return data
+
+class MessageForm(forms.Form):
+
+    msg = forms.CharField(label = "Message", min_length = 1, required = True)
+
+    def clean_message(self):
+        data = self.cleaned_data['msg']
+        return data

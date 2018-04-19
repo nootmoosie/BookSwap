@@ -171,7 +171,7 @@ class Message(models.Model):
     text = models.CharField(max_length=200, blank=True, default='None', help_text='Message')
 
     message_from = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_from')
-    user_from = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_to')
+    message_to = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_to')
     
     def __str__(self):
         return '{0}'.format(self.text)

@@ -25,7 +25,14 @@
         <div class="well">
           <p>{{user2.first_name}} {{user2.last_name}}</p>
           <!-- <img src="images/ProPic.jpg" class="img-circle" height="95" width="95" alt="Avatar"> -->
-          <p><a href="#">Send Message</a></p>
+          <!-- <p><a href="#">Send Message</a></p> -->
+          <form action="" method="post">
+              {% csrf_token %}
+              <table>
+                {{ form }}
+              </table>
+              <input type="submit" value="Submit" />
+          </form>
         </div>
         
         <div class="alert alert-success fade in">
