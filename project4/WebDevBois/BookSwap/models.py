@@ -3,6 +3,9 @@ from django.urls import reverse #Used to generate URLs by reversing the URL patt
 import uuid # Required for unique book instances
 from django.contrib.auth.models import User
 
+import datetime
+
+
 
 
 # Basic Model layout:
@@ -172,6 +175,8 @@ class Message(models.Model):
 
     message_from = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_from')
     message_to = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_to')
+
+    date_sent = models.DateTimeField(help_text="Date of Message Sent")
     
     def __str__(self):
         return '{0}'.format(self.text)

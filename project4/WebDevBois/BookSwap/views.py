@@ -16,6 +16,8 @@ from .forms import AddWishlistForm
 from .forms import MessageForm
 from .forms import EditBioForm
 
+import datetime
+
 def index(request):
 	"""
 	View function for home page of site.
@@ -90,7 +92,7 @@ def profileOther(request, pk):
 
 		if form.is_valid():
 			msg_data = form.cleaned_data['msg']
-			msg_new = Message(text = msg_data, message_from = request_user, message_to = user)
+			msg_new = Message(text = msg_data, message_from = request_user, message_to = user, date_sent = datetime.datetime.now())
 			msg_new.save()
 			return HttpResponseRedirect('{0}'.format(pk))
 	else:
