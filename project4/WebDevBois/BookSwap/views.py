@@ -166,6 +166,8 @@ def add_book(request):
             book_new.save()
             book_new.genre.add(genre_data)
 
+            x = 4
+
             book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
             book_instance_new.save()
             
