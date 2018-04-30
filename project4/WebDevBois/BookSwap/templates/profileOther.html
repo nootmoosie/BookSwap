@@ -56,22 +56,9 @@
         <p> {{book.author}}</p>
         <p> </p>
         {% endfor %}
-		{% if user.is_authenticated %}
 		<div class="well">
-		 <form class=messageForm action="" method="post">
-            {% csrf_token %}
-			<div>
-			<div class ="left">
-				<label> Message: </label>
-			</div>				
-			<div class="right">
-				{{ form.msg }}
-			</div>
-			</div>
-            <input type="submit" value="Submit" />
-         </form>
-		</div>
-    {% endif %} 
+        <a href="{% url 'sendMessage' user2.id %}" class="btn btn-primary">Send Message</a> 
+      </div>
       </div>
 	 
       <div class="col-sm-7">

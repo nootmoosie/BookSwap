@@ -10,4 +10,6 @@ urlpatterns = [
     path('profile', views.profileSelf, name='profileSelf'),
     path('contact', views.contact, name='contact'),
 	path('profile/editBio', views.edit_bio, name='editBio'),
+	path('profile/messages', views.messages, name='messages'),
+	path('profiles/<int:pk>/sendMessage', views.sendMessage, name='sendMessage'), #does this even work....??
 ]

@@ -171,7 +171,7 @@ class Message(models.Model):
     """
     Model representing each user in the system.
     """
-    text = models.CharField(max_length=200, blank=True, default='None', help_text='Message')
+    text = models.CharField(max_length=1000, blank=True, default='None', help_text='Message')
 
     message_from = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_from')
     message_to = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='msg_to')
