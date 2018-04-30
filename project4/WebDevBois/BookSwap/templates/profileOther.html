@@ -56,7 +56,7 @@
         <p> {{book.author}}</p>
         <p> </p>
         {% endfor %}
-		
+		{% if user.is_authenticated %}
 		<div class="well">
 		 <form class=messageForm action="" method="post">
             {% csrf_token %}
@@ -70,7 +70,8 @@
 			</div>
             <input type="submit" value="Submit" />
          </form>
-		</div> 
+		</div>
+    {% endif %} 
       </div>
 	 
       <div class="col-sm-7">
