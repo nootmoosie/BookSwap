@@ -104,6 +104,21 @@ def profileOther(request, pk):
 		'profileOther.html',
 		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist, 'form': form},
 		)
+@login_required
+def messages(request):
+	user = request.user
+	msgs = Message.objects.filter(message_to = user.id)
+
+	paginator = Paginator(msgs, 5)
+	page = request.GET.get('page', 1)
+	msgList = paginator.get_page(page)
+
+	return render(
+		request,
+		'messages.html',
+		context = {'user': user, 'messages': msgList},
+		)
+
 
 def addBook(request):
 	return render(

@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+
+	{% block title %}
+    <title>BookSwap | My messages</title>
+  	{% endblock %}
+
+
+	{% block content %}
+	<h1> My Messages </h1>
+
+	{% for msg in messages %}
+	<div class="row">
+          <div class="col-sm-3"> 
+            <div class="well">
+            <p> From: {{msg.message_from.first_name}} {{msg.message_from.last_name}}
+            	<br>Sent: {{msg.date_sent}}</p>
+            	
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>{{msg.text}}
+              </p>
+            <!-- <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-thumbs-up"></span> Add to Wishlist
+            </button> -->
+            </div>   
+          </div>
+	</div>	
+	{% endfor %}
+
+        <div class="pagination">
+        <span class="step-links">
+        {% if messages.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ messages.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ messages.number }} of {{ messages.paginator.num_pages }}.
+        </span>
+
+        {% if messages.has_next %}
+            <a href="?page={{ messages.next_page_number }}">next</a>
+            <a href="?page={{ messages.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        </span>
+        </div>
+        </div>
+
+
+
+        
+	{% endblock %}
