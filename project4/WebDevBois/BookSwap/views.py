@@ -288,7 +288,7 @@ def sendMessage(request, pk):
 			msg_data = form.cleaned_data['msg']
 			msg_new = Message(text = msg_data, message_from = request_user, message_to = user, date_sent = datetime.datetime.now())
 			msg_new.save()
-			return HttpResponseRedirect(reverse('profileSelf')) #unsure if correct
+			return HttpResponseRedirect(reverse('messages')) #unsure if correct
 	else:
 		form = MessageForm(initial={})
 

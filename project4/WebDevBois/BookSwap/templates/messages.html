@@ -13,8 +13,9 @@
           <div class="col-sm-3"> 
             <div class="well">
             <p> From: {{msg.message_from.first_name}} {{msg.message_from.last_name}}
-            	<br>Sent: {{msg.date_sent}}</p>
-            	
+            	<br>Sent: {{msg.date_sent}}
+            	<br><a href="{% url 'sendMessage' msg.message_from.id %}">Reply</a></p>
+
             </div>
           </div>
           <div class="col-sm-9">

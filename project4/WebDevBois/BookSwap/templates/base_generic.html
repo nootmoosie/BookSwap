@@ -42,7 +42,8 @@
 			        	<li><a href="{% url 'contact' %}">Contact Us</a></li>
 			      	</ul>
 			        <ul class="nav navbar-nav navbar-right">
-			      		{% if user.is_authenticated %}			      		
+			      		{% if user.is_authenticated %}	
+			      			<li><a href="{% url 'messages' %}"><span class="glyphicon glyphicon-user"></span> My Messages</a></li>		      		
 			      			<li><a href="{% url 'profileSelf' %}"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
 <!-- 			      			<li> User: {{user.get_username }}</li> -->
 			      			<li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
