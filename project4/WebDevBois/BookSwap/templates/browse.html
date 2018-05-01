@@ -159,7 +159,7 @@
       {% else %}
           <div class = "item peopleCarouselImg">
       {% endif %}
-            <img src="https://i.imgur.com/0l2uZR9.jpg" alt="Image">
+            <img src="{{books.instance_pic}}" alt="Image">
             <div class="carousel-caption">
             <h3><a href="{% url 'profileOther' books.owner.id %}"> {{books.book.title}}</a></h3>
             <p>Author: {{books.book.author}}</p>
