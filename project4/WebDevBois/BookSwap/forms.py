@@ -30,7 +30,7 @@ class AddBookForm(forms.Form):
     genre = forms.ModelChoiceField(queryset = Genre.objects.all())
     comments = forms.CharField(label = "Comments (Optional)", required = False)
     for_class = forms.CharField(label = "College Class? (If no leave blank)", required = False)
-
+    url = forms.CharField(label = "Image URL", required = False)
 
     def clean_title(self):
         data = self.cleaned_data['title']
@@ -58,6 +58,10 @@ class AddBookForm(forms.Form):
 
     def clean_for_class(self):
         data = self.cleaned_data['for_class']
+        return data
+
+    def clean_url(self):
+        data = self.cleaned_data['url']
         return data
 
 
@@ -108,6 +112,6 @@ class MessageForm(forms.Form):
 
     msg = forms.CharField(label = "Message", min_length = 1, required = True)
 
-    def clean_message(self):
+    def clean_msg(self):
         data = self.cleaned_data['msg']
         return data

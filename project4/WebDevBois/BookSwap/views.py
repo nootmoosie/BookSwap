@@ -145,6 +145,7 @@ def add_book(request):
             genre_data = form.cleaned_data['genre']
             comments_data = form.cleaned_data['comments']
             for_class_data = form.cleaned_data['for_class']
+            url = form.cleaned_data['url']
 
             author_new = Author(first_name = author_first_data, last_name = author_last_data)
 
@@ -168,7 +169,7 @@ def add_book(request):
 
             x = 4
 
-            book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data)
+            book_instance_new = BookInstance(book = book_new, owner = use, book_condition = condition_data , comment = comments_data, instance_pic = url)
             book_instance_new.save()
             
 
