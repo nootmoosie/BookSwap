@@ -91,7 +91,7 @@ class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True) 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    instance_pic = models.ImageField(upload_to = 'bookinstance_imgs/', default = 'bookinstance_imgs/default_instance.jpg')
+    instance_pic = models.ImageField(upload_to = 'book_image', blank=True)
 
 
     CONDITION = (

@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 	path('', views.index, name='index'),
@@ -10,4 +12,4 @@ urlpatterns = [
     path('profile', views.profileSelf, name='profileSelf'),
     path('contact', views.contact, name='contact'),
 	path('profile/editBio', views.edit_bio, name='editBio'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
