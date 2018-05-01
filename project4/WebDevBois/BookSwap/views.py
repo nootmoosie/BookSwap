@@ -41,14 +41,18 @@ def browse(request):
 		user = request.user
 		admin = User.objects.get(username = "compsci326")
 		queryset = BookInstance.objects.exclude(owner = user.id).exclude(owner = admin.id)
+		fictBooks = Book.objects.filter(genre = 1)
+		fictInst = BookInstance.objects.filter(book__in=fictBooks)
 	else:
 		admin = User.objects.get(username = "compsci326")
 		queryset = BookInstance.objects.exclude(owner = admin.id)
+		fictBooks = Book.objects.filter(genre = 1)
+		fictInst = BookInstance.objects.filter(book__in=fictBooks)
 
 	return render(
 		request,
 		'browse.html',
-		context={'queryset' : queryset,},
+		context={'queryset' : queryset, 'fictInst' : fictInst},
 		)
 
 @login_required
