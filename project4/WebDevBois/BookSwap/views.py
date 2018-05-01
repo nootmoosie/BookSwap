@@ -87,22 +87,22 @@ def profileOther(request, pk):
 	page = request.GET.get('page', 1)
 	books = paginator.get_page(page)
 
-	if request.method == 'POST':
-		form = MessageForm(request.POST)
-
-		if form.is_valid():
-			msg_data = form.cleaned_data['msg']
-			msg_new = Message(text = msg_data, message_from = request_user, message_to = user, date_sent = datetime.datetime.now())
-			msg_new.save()
-			return HttpResponseRedirect('{0}'.format(pk))
-	else:
-		form = MessageForm(initial={})
+#	if request.method == 'POST':
+#		form = MessageForm(request.POST)
+#
+#		if form.is_valid():
+#			msg_data = form.cleaned_data['msg']
+#			msg_new = Message(text = msg_data, message_from = request_user, message_to = user, date_sent = datetime.datetime.now())
+#			msg_new.save()
+#			return HttpResponseRedirect('{0}'.format(pk))
+#	else:
+#		form = MessageForm(initial={})
 
 
 	return render(
 		request,
 		'profileOther.html',
-		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist, 'form': form},
+		context={'user2':user, 'profile': profile, 'books':books, 'wishlist':wishlist},
 		)
 @login_required
 def messages(request):
@@ -275,3 +275,24 @@ def edit_bio(request):
         form.fields['bio'].initial = profile.bio
 
     return render(request, 'editBio.html', {'form': form})
+
+@login_required	
+def sendMessage(request, pk):
+	user = User.objects.get(id = pk)
+	request_user = request.user #aka the person looking at the page
+
+	if request.method == 'POST':
+		form = MessageForm(request.POST)
+
+		if form.is_valid():
+			msg_data = form.cleaned_data['msg']
+			msg_new = Message(text = msg_data, message_from = request_user, message_to = user, date_sent = datetime.datetime.now())
+			msg_new.save()
+			return HttpResponseRedirect(reverse('profileSelf')) #unsure if correct
+	else:
+		form = MessageForm(initial={})
+
+
+	return render(
+		request,
+		'sendMessage.html', {'form': form})
