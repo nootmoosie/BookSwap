@@ -106,7 +106,7 @@ class EditBioForm(forms.Form):
 
 class MessageForm(forms.Form):
 
-    msg = forms.CharField(label = "Message", min_length = 1, required = True)
+    msg = forms.CharField(label = "Message", min_length = 1, widget=forms.Textarea, required = True)
 
     def clean_message(self):
         data = self.cleaned_data['msg']
